@@ -192,3 +192,31 @@ footer {
     color: #b3b3b3;
     font-size: 0.9rem;
 }
+/* Style pour le formulaire de contact */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #f4f4f4;
+    font-size: 1rem;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: #00a8ff;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
