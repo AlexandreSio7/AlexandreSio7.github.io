@@ -6,25 +6,28 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Couleurs Dark Mode */
+/* Couleurs Dark Mode - Nuit Bleutée Moderne */
 body {
-    background-color: #121212;
-    color: #f4f4f4;
+    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+    color: #f8fafc;
     line-height: 1.6;
     scroll-behavior: smooth;
+    min-height: 100vh;
 }
 
-/* Navigation */
+/* Navigation - Effet verre dépoli */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: #1a1a1a;
+    background-color: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo {
@@ -40,9 +43,10 @@ nav {
 }
 
 .nav-links a {
-    color: #f4f4f4;
+    color: #f8fafc;
     text-decoration: none;
     transition: color 0.3s;
+    font-weight: 500;
 }
 
 .nav-links a:hover {
@@ -67,7 +71,7 @@ nav {
 .hero p {
     margin: 20px 0;
     font-size: 1.2rem;
-    color: #b3b3b3;
+    color: #94a3b8;
 }
 
 /* Boutons */
@@ -77,13 +81,16 @@ nav {
     background-color: #00a8ff;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 6px;
     font-weight: bold;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    border: 1px solid #00a8ff;
 }
 
 .btn:hover {
     background-color: #008be6;
+    box-shadow: 0 0 15px rgba(0, 168, 255, 0.4);
+    transform: translateY(-2px);
 }
 
 /* Sections globales */
@@ -96,102 +103,119 @@ nav {
 .section-title {
     text-align: center;
     margin-bottom: 40px;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #00a8ff;
 }
 
-/* Cartes Projets */
+/* Cartes Projets - Modernes avec Néon */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .card {
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #333;
-    transition: transform 0.3s;
+    background-color: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
     border-color: #00a8ff;
+    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.2), 0 0 15px rgba(0, 168, 255, 0.1);
 }
 
 .card h3 {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 1.4rem;
 }
 
 .card p {
-    color: #b3b3b3;
+    color: #cbd5e1;
     margin-bottom: 15px;
 }
 
+/* Badges */
 .badge {
     display: inline-block;
-    background-color: #333;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    margin-right: 5px;
-    color: #00a8ff;
+    background-color: rgba(0, 168, 255, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-right: 8px;
+    color: #38bdf8;
     margin-bottom: 15px;
+    border: 1px solid rgba(0, 168, 255, 0.3);
 }
 
 /* Footer & Contact */
 footer {
-    background-color: #1a1a1a;
+    background-color: rgba(15, 23, 42, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     text-align: center;
     padding: 50px 20px;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .social-links {
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 .btn-social {
     color: #00a8ff;
     text-decoration: none;
     border: 1px solid #00a8ff;
-    padding: 8px 15px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 6px;
     margin: 0 10px;
     transition: all 0.3s;
+    display: inline-block;
 }
 
 .btn-social:hover {
     background-color: #00a8ff;
     color: #fff;
+    box-shadow: 0 0 15px rgba(0, 168, 255, 0.4);
 }
 
 .copyright {
-    color: #666;
+    color: #64748b;
     margin-top: 20px;
     font-size: 0.9rem;
 }
 
 /* Style pour les preuves visuelles (Photos / Vidéos) */
 .media-container {
-    margin: 20px 0;
+    margin: 25px 0;
     text-align: center;
 }
 
 .media-container img, .media-container video {
     max-width: 100%;
-    border: 2px solid #333;
+    border: 2px solid #334155;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
     margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.media-container img:hover {
+    transform: scale(1.02);
+    border-color: #00a8ff;
 }
 
 .media-caption {
     font-style: italic;
-    color: #b3b3b3;
-    font-size: 0.9rem;
+    color: #94a3b8;
+    font-size: 0.95rem;
 }
+
 /* Style pour le formulaire de contact */
 .contact-form {
     max-width: 600px;
@@ -199,21 +223,29 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    text-align: left;
+}
+
+.contact-form label {
+    font-weight: 600;
+    color: #f8fafc;
 }
 
 .contact-form input, .contact-form textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #1e1e1e;
-    color: #f4f4f4;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    background-color: rgba(15, 23, 42, 0.6);
+    color: #f8fafc;
     font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 .contact-form input:focus, .contact-form textarea:focus {
     outline: none;
     border-color: #00a8ff;
+    box-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
 }
 
 .contact-form textarea {
