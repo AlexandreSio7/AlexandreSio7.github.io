@@ -3,37 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet WDS/MDT - Alexandre Barrey</title>
+    <title>Projet WDS - Alexandre Barrey</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <nav>
         <div class="logo">Alexandre B.</div>
         <ul class="nav-links">
-            <li><a href="index.html">⬅ Retour à l'accueil</a></li>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#projets">Projets</a></li>
+            <li><a href="veille.html">Veille Tech</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <section class="section" style="margin-top: 80px;">
-        <h1 class="section-title">Installation Serveur WDS / MDT</h1>
+    <section class="section" style="margin-top: 100px;">
+        <h1 class="section-title">Déploiement Automatisé via WDS</h1>
         
-        <div class="card">
-            <h2>1. Contexte et Explication Rapide</h2>
-            <p>Dans le cadre de ma formation, l'objectif était d'automatiser le déploiement de postes de travail Windows sur le réseau afin de gagner du temps lors de l'installation d'un nouveau parc informatique.</p>
-            <br>
-            
-            <h2>2. Preuves de réalisation</h2>
-            <p>Déploiement en PXE et configuration du rôle WDS :</p>
-            
-            <div class="media-container">
-                <img src="capture-wds.png" alt="Interface WDS">
-                <p class="media-caption">Photo 1 : Configuration du serveur WDS et de l'image de démarrage.</p>
-            </div>
-            <br>
+        <div class="card" style="margin-bottom: 30px;">
+            <h3>📋 Contexte du projet</h3>
+            <p>Dans le cadre d'un parc informatique en expansion, l'installation manuelle de Windows sur chaque poste devenait trop chronophage. L'objectif était de mettre en place une solution de déploiement par le réseau (PXE).</p>
+        </div>
 
-            <h2>3. Compétences Validées (E6)</h2>
-            <p>✅ Déployer un service (Bloc 5)<br>✅ Recenser et identifier les ressources numériques (Bloc 1)</p>
+        <div class="grid-container">
+            <div class="card">
+                <h3>🛠️ Réalisation Technique</h3>
+                <ul>
+                    <li>Installation et configuration du rôle <strong>Windows Deployment Services (WDS)</strong>.</li>
+                    <li>Configuration du serveur <strong>DHCP</strong> (Options 66 et 67) pour l'amorçage PXE.</li>
+                    <li>Capture et intégration d'images de démarrage (Boot.wim) et d'installation (Install.wim).</li>
+                    <li>Injection de pilotes réseau et stockage pour la compatibilité matérielle.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>✅ Compétences SISR validées</h3>
+                <span class="badge">B1.2 - Administration système</span>
+                <span class="badge">B2.1 - Support utilisateur</span>
+                <p style="margin-top: 15px;">Ce projet m'a permis de comprendre la gestion des flux réseaux PXE et l'optimisation du temps de préparation des postes clients.</p>
+            </div>
+        </div>
+
+        <div class="media-container" style="margin-top: 40px;">
+            <p class="media-caption">Installation d'un client via le réseau PXE (Exemple de maquette)</p>
+            <div style="background: #1e293b; padding: 50px; border-radius: 8px; border: 1px dashed #00a8ff;">
+                <p style="color: #00a8ff;">🖼️ [Ajoute ici une capture d'écran de ta console WDS]</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="index.html#projets" class="btn">← Retour aux projets</a>
         </div>
     </section>
+
+    <footer>
+        <p>© 2026 - Alexandre Barrey</p>
+    </footer>
+
 </body>
 </html>
