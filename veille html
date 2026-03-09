@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Technologique - Alexandre Barrey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Alexandre B.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#projets">Projets (E6)</a></li>
+            <li><a href="cv-ambitions.html">CV & Ambitions</a></li>
+            <li><a href="veille.html" style="color: #00a8ff;">Veille Tech</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="section" style="margin-top: 80px;">
+        <h1 class="section-title">Ma Veille Technologique (2026)</h1>
+        <p style="text-align: center; margin-bottom: 40px; color: #b3b3b3;">
+            Thème principal : L'évolution des performances, de la sécurité et de l'automatisation dans les infrastructures systèmes.
+        </p>
+        
+        <div class="grid-container">
+            
+            <div class="card">
+                <h3>💾 Windows Server 2025 : Révolution NVMe</h3>
+                <span class="badge">Stockage</span>
+                <span class="badge">Performance</span>
+                <br><br>
+                <p><strong>L'actualité :</strong> Microsoft abandonne l'ancienne pile SCSI au profit du pilote natif NVMeDisk.sys.</p>
+                <p><strong>Impact SISR :</strong> Cette refonte totale de la pile de stockage permet des gains massifs en production : jusqu'à 80% d'IOPS en plus et une baisse de 12% de la charge CPU sur les serveurs.</p>
+                <br>
+                <p style="font-size: 0.8rem; color: #666;"><em>Sources : Microsoft Tech Community, StorageReview (Mars 2026)</em></p>
+            </div>
+
+            <div class="card">
+                <h3>🛡️ Transition Secure Boot & Patching</h3>
+                <span class="badge">Cybersécurité</span>
+                <span class="badge">Infrastructure</span>
+                <br><br>
+                <p><strong>L'actualité :</strong> Expiration critique des certificats Secure Boot de 2011 prévue pour juin et octobre 2026, nécessitant une migration vers les CA 2023.</p>
+                <p><strong>Impact SISR :</strong> Les administrateurs doivent anticiper cette transition et patcher les failles critiques (comme la CVE-2026-21265) pour éviter que les serveurs et postes clients ne refusent de démarrer.</p>
+                <br>
+                <p style="font-size: 0.8rem; color: #666;"><em>Sources : Microsoft Support, Base de connaissances Dell, NVD/NIST</em></p>
+            </div>
+
+            <div class="card">
+                <h3>🐧 L'arrivée du Linux Kernel 7.0</h3>
+                <span class="badge">Système Libre</span>
+                <span class="badge">Optimisation</span>
+                <br><br>
+                <p><strong>L'actualité :</strong> Linus Torvalds annonce le passage à la branche 7.x, intégrant notamment NTSYNC et l'optimisation mémoire "slub sheaves".</p>
+                <p><strong>Impact SISR :</strong> Ces avancées préparent les systèmes Linux à mieux gérer les charges de travail modernes, tout en facilitant l'intégration d'outils d'IA agentique directement au niveau de l'OS (ex: SUSE).</p>
+                <br>
+                <p style="font-size: 0.8rem; color: #666;"><em>Sources : Linux Magazine, Techzine Global, Kernel.org (Fév. 2026)</em></p>
+            </div>
+
+            <div class="card">
+                <h3>🤖 AIOps et IA Agentique via MCP</h3>
+                <span class="badge">Automatisation</span>
+                <span class="badge">Supervision</span>
+                <br><br>
+                <p><strong>L'actualité :</strong> L'émergence des systèmes multi-agents capables de prendre des décisions autonomes dans la gestion IT, propulsée par le standard MCP (Model Context Protocol).</p>
+                <p><strong>Impact SISR :</strong> L'AIOps transforme le support et la supervision. Les agents IA peuvent désormais se connecter en temps réel aux outils d'infrastructure pour diagnostiquer et résoudre les incidents réseau de façon autonome.</p>
+                <br>
+                <p style="font-size: 0.8rem; color: #666;"><em>Sources : Gartner, CloudKeeper, APMdigest (Janv. 2026)</em></p>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
