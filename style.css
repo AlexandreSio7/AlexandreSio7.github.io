@@ -137,6 +137,7 @@ nav {
     font-size: 0.8rem;
     margin-right: 5px;
     color: #00a8ff;
+    margin-bottom: 15px;
 }
 
 /* Footer & Contact */
@@ -169,5 +170,25 @@ footer {
 .copyright {
     color: #666;
     margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* Style pour les preuves visuelles (Photos / Vidéos) */
+.media-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.media-container img, .media-container video {
+    max-width: 100%;
+    border: 2px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    margin-bottom: 15px;
+}
+
+.media-caption {
+    font-style: italic;
+    color: #b3b3b3;
     font-size: 0.9rem;
 }
