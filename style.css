@@ -1,254 +1,195 @@
-/* Réinitialisation de base */
+/* ============================================================
+   PORTFOLIO ALEXANDRE BARREY - DARK MODE MODERN
+   ============================================================ */
+
+/* 1. Réinitialisation complète */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Couleurs Dark Mode - Nuit Bleutée Moderne */
+/* 2. Style Global & Couleurs de fond */
 body {
-    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-    color: #f8fafc;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-    min-height: 100vh;
+    background: #020617; /* Couleur de secours */
+    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+    color: #f8fafc;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    min-height: 100vh;
 }
 
-/* Navigation - Effet verre dépoli */
+/* 3. Navigation (Effet verre dépoli) */
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    background-color: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00a8ff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00a8ff;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+    list-style: none;
+    display: flex;
+    gap: 25px;
 }
 
 .nav-links a {
-    color: #f8fafc;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-weight: 500;
+    color: #f8fafc;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 500;
 }
 
 .nav-links a:hover {
-    color: #00a8ff;
+    color: #00a8ff;
 }
 
-/* Accueil (Hero) */
+/* 4. Accueil (Hero Section) */
 .hero {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
-    margin-top: 50px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
 }
 
 .hero h1 span {
-    color: #00a8ff;
+    color: #00a8ff;
 }
 
 .hero p {
-    margin: 20px 0;
-    font-size: 1.2rem;
-    color: #94a3b8;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #94a3b8;
 }
 
-/* Boutons */
+/* 5. Boutons */
 .btn {
-    display: inline-block;
-    padding: 10px 25px;
-    background-color: #00a8ff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    border: 1px solid #00a8ff;
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #00a8ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border: 1px solid #00a8ff;
 }
 
 .btn:hover {
-    background-color: #008be6;
-    box-shadow: 0 0 15px rgba(0, 168, 255, 0.4);
-    transform: translateY(-2px);
+    background-color: #008be6;
+    box-shadow: 0 0 15px rgba(0, 168, 255, 0.4);
+    transform: translateY(-2px);
 }
 
-/* Sections globales */
+/* 6. Sections et Grilles */
 .section {
-    padding: 80px 20px;
-    max-width: 1100px;
-    margin: auto;
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2rem;
-    color: #00a8ff;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.2rem;
+    color: #00a8ff;
 }
 
-/* Cartes Projets - Modernes avec Néon */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 
+/* 7. Cartes Projets */
 .card {
-    background-color: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #334155;
-    transition: all 0.4s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background-color: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    transition: 0.4s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    border-color: #00a8ff;
-    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.2), 0 0 15px rgba(0, 168, 255, 0.1);
+    transform: translateY(-8px);
+    border-color: #00a8ff;
+    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.2);
 }
 
 .card h3 {
-    margin-bottom: 12px;
-    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    color: #ffffff;
 }
 
 .card p {
-    color: #cbd5e1;
-    margin-bottom: 15px;
+    color: #cbd5e1;
+    margin-bottom: 15px;
 }
 
-/* Badges */
+/* 8. Badges */
 .badge {
-    display: inline-block;
-    background-color: rgba(0, 168, 255, 0.15);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-right: 8px;
-    color: #38bdf8;
-    margin-bottom: 15px;
-    border: 1px solid rgba(0, 168, 255, 0.3);
+    display: inline-block;
+    background-color: rgba(0, 168, 255, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 8px 10px 0;
+    color: #38bdf8;
+    border: 1px solid rgba(0, 168, 255, 0.3);
 }
 
-/* Footer & Contact */
+/* 9. Footer */
 footer {
-    background-color: rgba(15, 23, 42, 0.95);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    text-align: center;
-    padding: 50px 20px;
-    margin-top: 60px;
-}
-
-.social-links {
-    margin: 25px 0;
+    background-color: rgba(15, 23, 42, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: 60px;
 }
 
 .btn-social {
-    color: #00a8ff;
-    text-decoration: none;
-    border: 1px solid #00a8ff;
-    padding: 10px 20px;
-    border-radius: 6px;
-    margin: 0 10px;
-    transition: all 0.3s;
-    display: inline-block;
+    color: #00a8ff;
+    text-decoration: none;
+    border: 1px solid #00a8ff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin: 10px;
+    display: inline-block;
+    transition: 0.3s;
 }
 
 .btn-social:hover {
-    background-color: #00a8ff;
-    color: #fff;
-    box-shadow: 0 0 15px rgba(0, 168, 255, 0.4);
+    background-color: #00a8ff;
+    color: #fff;
 }
 
-.copyright {
-    color: #64748b;
-    margin-top: 20px;
-    font-size: 0.9rem;
-}
-
-/* Style pour les preuves visuelles (Photos / Vidéos) */
-.media-container {
-    margin: 25px 0;
-    text-align: center;
-}
-
-.media-container img, .media-container video {
-    max-width: 100%;
-    border: 2px solid #334155;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
-}
-
-.media-container img:hover {
-    transform: scale(1.02);
-    border-color: #00a8ff;
-}
-
-.media-caption {
-    font-style: italic;
-    color: #94a3b8;
-    font-size: 0.95rem;
-}
-
-/* Style pour le formulaire de contact */
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: left;
-}
-
-.contact-form label {
-    font-weight: 600;
-    color: #f8fafc;
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    background-color: rgba(15, 23, 42, 0.6);
-    color: #f8fafc;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.contact-form input:focus, .contact-form textarea:focus {
-    outline: none;
-    border-color: #00a8ff;
-    box-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
-}
-
-.contact-form textarea {
-    resize: vertical;
-    min-height: 150px;
+/* 10. Responsive Mobile */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .hero h1 { font-size: 2rem; }
+    .section { padding: 60px 20px; }
 }
