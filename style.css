@@ -1,28 +1,45 @@
-/* Réinitialisation de base */
+/* =========================================
+   RÉINITIALISATION & VARIABLES
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* Couleurs Dark Mode - Nuit Bleutée Moderne */
+:root {
+    --primary-blue: #00a8ff;
+    --dark-bg: #020617;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --transition: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-    color: #f8fafc;
+    color: var(--text-main);
     line-height: 1.6;
-    scroll-behavior: smooth;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Navigation - Effet verre dépoli */
+/* =========================================
+   NAVIGATION (Effet Verre Dépoli)
+   ========================================= */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
     background-color: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     position: fixed;
     width: 100%;
     top: 0;
@@ -33,27 +50,33 @@ nav {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #00a8ff;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0, 168, 255, 0.3);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 .nav-links a {
-    color: #f8fafc;
+    color: var(--text-main);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: var(--transition);
     font-weight: 500;
+    font-size: 0.95rem;
 }
 
 .nav-links a:hover {
-    color: #00a8ff;
+    color: var(--primary-blue);
 }
 
-/* Accueil (Hero) */
+/* =========================================
+   ACCUEIL (HERO SECTION)
+   ========================================= */
 .hero {
     height: 100vh;
     display: flex;
@@ -61,194 +84,191 @@ nav {
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    margin-top: 50px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 
 .hero h1 span {
-    color: #00a8ff;
+    color: var(--primary-blue);
+    text-shadow: 0 0 20px rgba(0, 168, 255, 0.2);
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    font-weight: 400;
 }
 
 .hero p {
-    margin: 20px 0;
-    font-size: 1.2rem;
-    color: #94a3b8;
+    margin: 25px auto;
+    max-width: 700px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
 }
 
-/* Boutons */
+/* =========================================
+   BOUTONS
+   ========================================= */
 .btn {
     display: inline-block;
-    padding: 10px 25px;
-    background-color: #00a8ff;
+    padding: 12px 28px;
+    background-color: var(--primary-blue);
     color: #fff;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: bold;
-    transition: all 0.3s ease;
-    border: 1px solid #00a8ff;
+    transition: var(--transition);
+    border: 1px solid var(--primary-blue);
+    cursor: pointer;
 }
 
 .btn:hover {
     background-color: #008be6;
-    box-shadow: 0 0 15px rgba(0, 168, 255, 0.4);
-    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 168, 255, 0.4);
+    transform: translateY(-3px);
 }
 
-/* Sections globales */
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.btn-outline:hover {
+    background: rgba(0, 168, 255, 0.1);
+}
+
+/* =========================================
+   GRILLE & CARTES (PROJETS)
+   ========================================= */
 .section {
-    padding: 80px 20px;
-    max-width: 1100px;
+    padding: 100px 20px;
+    max-width: 1200px;
     margin: auto;
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.2rem;
-    color: #00a8ff;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
+    color: var(--primary-blue);
 }
 
-/* Cartes Projets - Modernes avec Néon */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
 .card {
-    background-color: rgba(30, 41, 59, 0.7);
+    background-color: var(--card-bg);
     backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #334155;
-    transition: all 0.4s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    border-color: #00a8ff;
-    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.2), 0 0 15px rgba(0, 168, 255, 0.1);
+    transform: translateY(-10px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 168, 255, 0.1);
 }
 
 .card h3 {
-    margin-bottom: 12px;
-    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #fff;
 }
 
 .card p {
-    color: #cbd5e1;
-    margin-bottom: 15px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    flex-grow: 1;
 }
 
-/* Badges */
+/* =========================================
+   BADGES & TAGS
+   ========================================= */
 .badge {
     display: inline-block;
-    background-color: rgba(0, 168, 255, 0.15);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-right: 8px;
+    background-color: rgba(0, 168, 255, 0.1);
     color: #38bdf8;
-    margin-bottom: 15px;
-    border: 1px solid rgba(0, 168, 255, 0.3);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0 8px 10px 0;
+    border: 1px solid rgba(0, 168, 255, 0.2);
 }
 
-/* Footer & Contact */
+/* =========================================
+   FOOTER & CONTACT
+   ========================================= */
 footer {
-    background-color: rgba(15, 23, 42, 0.95);
+    background-color: rgba(2, 6, 23, 0.95);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     text-align: center;
-    padding: 50px 20px;
-    margin-top: 60px;
+    padding: 60px 20px;
+    margin-top: 80px;
 }
 
 .social-links {
-    margin: 25px 0;
+    margin: 30px 0;
 }
 
 .btn-social {
-    color: #00a8ff;
+    color: var(--primary-blue);
     text-decoration: none;
-    border: 1px solid #00a8ff;
-    padding: 10px 20px;
+    border: 1px solid var(--primary-blue);
+    padding: 10px 25px;
     border-radius: 6px;
     margin: 0 10px;
-    transition: all 0.3s;
+    transition: var(--transition);
     display: inline-block;
 }
 
 .btn-social:hover {
-    background-color: #00a8ff;
+    background-color: var(--primary-blue);
     color: #fff;
-    box-shadow: 0 0 15px rgba(0, 168, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 168, 255, 0.3);
 }
 
 .copyright {
     color: #64748b;
-    margin-top: 20px;
-    font-size: 0.9rem;
+    margin-top: 30px;
+    font-size: 0.85rem;
 }
 
-/* Style pour les preuves visuelles (Photos / Vidéos) */
-.media-container {
-    margin: 25px 0;
-    text-align: center;
-}
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================= */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-.media-container img, .media-container video {
-    max-width: 100%;
-    border: 2px solid #334155;
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    margin-bottom: 15px;
-    transition: transform 0.3s ease;
-}
+    .nav-links {
+        gap: 15px;
+    }
 
-.media-container img:hover {
-    transform: scale(1.02);
-    border-color: #00a8ff;
-}
+    .hero h1 {
+        font-size: 2.2rem;
+    }
 
-.media-caption {
-    font-style: italic;
-    color: #94a3b8;
-    font-size: 0.95rem;
-}
+    .section-title {
+        font-size: 2rem;
+    }
 
-/* Style pour le formulaire de contact */
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    text-align: left;
-}
-
-.contact-form label {
-    font-weight: 600;
-    color: #f8fafc;
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    background-color: rgba(15, 23, 42, 0.6);
-    color: #f8fafc;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.contact-form input:focus, .contact-form textarea:focus {
-    outline: none;
-    border-color: #00a8ff;
-    box-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
-}
-
-.contact-form textarea {
-    resize: vertical;
-    min-height: 150px;
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
 }
