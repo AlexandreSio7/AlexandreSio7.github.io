@@ -1,60 +1,121 @@
-/* =========================================
-   PORTFOLIO ALEXANDRE BARREY - SISR 2026
-   ========================================= */
+/* ============================================================
+   PORTFOLIO ALEXANDRE BARREY - MODERN GLASSMORPHISM (SISR)
+   Design Unique, Fluide et Futursiste
+   ============================================================ */
 
-/* 1. Réinitialisation */
+/* 1. Variables Globales & Reset */
+:root {
+    --bg-dark: #040509; /* Fond très sombre, presque noir */
+    --bg-panel: rgba(255, 255, 255, 0.03); /* Panneau de verre ultra-fin */
+    --border-glass: rgba(255, 255, 255, 0.08); /* Bordure discrète */
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-neon: #00f2fe; /* Bleu Néon Électrique */
+    --accent-glow: rgba(0, 242, 254, 0.3);
+    --accent-purple: #4facfe; /* Dégradé vers violet/bleu */
+    --transition-fast: all 0.2s ease;
+    --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* 2. Fond et Couleurs Globales */
+/* 2. Style Global Body */
 body {
-    background: #020617; /* Couleur de secours */
-    background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-    color: #f8fafc;
+    background-color: var(--bg-dark);
+    /* Léger motif de grille en arrière-plan pour le côté "Réseau" */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 50px 50px;
+    color: var(--text-primary);
     line-height: 1.6;
     scroll-behavior: smooth;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* 3. Navigation */
+/* Outil pour masquer la barre de défilement tout en gardant le scroll */
+::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--border-glass);
+    border-radius: 3px;
+}
+
+/* 3. Navigation - Effet Verre Dépoli Flouté */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background-color: rgba(15, 23, 42, 0.9);
-    backdrop-filter: blur(10px);
+    padding: 15px 40px;
+    background-color: rgba(4, 5, 9, 0.7);
+    backdrop-filter: blur(20px); /* Flou puissant */
+    -webkit-backdrop-filter: blur(20px);
     position: fixed;
-    width: 100%;
-    top: 0;
+    width: calc(100% - 40px); /* Espacement sur les côtés */
+    max-width: 1400px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 100px; /* Bords très arrondis, style "pill" */
+    border: 1px solid var(--border-glass);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-smooth);
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00a8ff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Effet de lueur sur le logo */
+    text-shadow: 0 0 10px var(--accent-glow);
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
 .nav-links a {
-    color: #f8fafc;
+    color: var(--text-secondary);
     text-decoration: none;
-    transition: 0.3s;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Soulignement animé au survol */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-neon);
+    transition: var(--transition-fast);
 }
 
 .nav-links a:hover {
-    color: #00a8ff;
+    color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* 4. Hero Section */
@@ -65,172 +126,318 @@ nav {
     align-items: center;
     text-align: center;
     padding: 0 20px;
+    position: relative;
+}
+
+/* Dégradé lumineux flou derrière le texte */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
 }
 
 .hero h1 span {
-    color: #00a8ff;
+    /* Texte en dégradé */
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-neon));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px var(--accent-glow);
 }
 
 .hero p {
-    margin: 20px 0;
-    font-size: 1.2rem;
-    color: #94a3b8;
+    margin: 25px auto;
+    max-width: 650px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
 }
 
-/* 5. Boutons Génériques */
+/* 5. Boutons - Style Minimaliste avec Lueur */
 .btn {
     display: inline-block;
-    padding: 10px 25px;
-    background-color: #00a8ff;
-    color: #fff;
+    padding: 12px 30px;
+    background: transparent;
+    color: var(--accent-neon);
     text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s ease;
-    border: 1px solid #00a8ff;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid var(--accent-neon);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
 }
 
 .btn:hover {
-    background-color: #008be6;
-    box-shadow: 0 0 15px rgba(0, 168, 255, 0.4);
+    color: #040509;
+    background-color: var(--accent-neon);
+    box-shadow: 0 0 30px var(--accent-glow);
     transform: translateY(-2px);
 }
 
 /* 6. Sections et Grilles */
 .section {
-    padding: 100px 20px;
-    max-width: 1100px;
+    padding: 120px 20px;
+    max-width: 1200px;
     margin: auto;
 }
 
 .section-title {
-    text-align: center;
-    margin-bottom: 40px;
+    text-align: left; /* Aligné à gauche pour changer */
+    margin-bottom: 60px;
     font-size: 2.2rem;
-    color: #00a8ff;
+    font-weight: 800;
+    color: var(--text-primary);
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Barre verticale accentuée à côté du titre */
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    height: 80%;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--accent-purple), var(--accent-neon));
+    border-radius: 2px;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
 }
 
-/* 7. Cartes Projets */
+/* 7. Cartes Projets - Le cœur du design Unique */
 .card {
-    background-color: rgba(30, 41, 59, 0.7);
+    background: var(--bg-panel);
     backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 12px;
-    border: 1px solid #334155;
-    transition: 0.4s ease;
+    -webkit-backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-glass);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de lueur subtile qui se déplace au survol */
+.card::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-glow);
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0;
+    transition: var(--transition-smooth);
+    top: -50px;
+    right: -50px;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    border-color: #00a8ff;
-    box-shadow: 0 10px 20px rgba(0, 168, 255, 0.2);
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(0, 242, 254, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.card h3 { margin-bottom: 12px; color: #fff; }
-.card p { color: #cbd5e1; margin-bottom: 15px; }
+.card:hover::after {
+    opacity: 1;
+}
 
-/* 8. Badges */
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: var(--transition-fast);
+}
+
+.card:hover h3 {
+    color: var(--accent-neon);
+}
+
+.card p {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+/* 8. Badges - Style Tech Épuré */
 .badge {
     display: inline-block;
-    background-color: rgba(0, 168, 255, 0.15);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: #38bdf8;
-    margin: 0 8px 10px 0;
-    border: 1px solid rgba(0, 168, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin: 0 6px 8px 0;
+    border: 1px solid var(--border-glass);
+    transition: var(--transition-fast);
 }
 
-/* 9. FORMULAIRE DE CONTACT (Le correctif pour l'image 2) */
+.card:hover .badge {
+    border-color: rgba(0, 242, 254, 0.1);
+    color: var(--text-primary);
+}
+
+/* 9. FORMULAIRE DE CONTACT - Style Minimaliste et Aligné (Correctif Complet) */
 .contact-form {
-    max-width: 600px;
+    max-width: 650px;
     margin: 40px auto;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espace vertical entre les champs */
+    gap: 25px; /* Espace entre les blocs */
     text-align: left;
 }
 
+/* Chaque champ est dans son propre container pour l'alignement */
 .contact-form div {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px; /* Espace entre le label et le champ */
 }
 
 .contact-form label {
     font-weight: 600;
-    color: #f8fafc;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
 }
 
 .contact-form input, 
 .contact-form textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #334155;
-    border-radius: 8px;
-    background-color: rgba(15, 23, 42, 0.6);
-    color: #f8fafc;
+    padding: 15px;
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-primary);
     font-size: 1rem;
+    transition: var(--transition-fast);
 }
 
 .contact-form input:focus, 
 .contact-form textarea:focus {
     outline: none;
-    border-color: #00a8ff;
-    box-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
+    border-color: var(--accent-neon);
+    box-shadow: 0 0 15px var(--accent-glow);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .contact-form textarea {
-    min-height: 150px;
+    min-height: 180px;
     resize: vertical;
 }
 
-/* Bouton envoyer spécifique */
+/* Grosse barre bleue pour le bouton envoyer */
 .btn-submit {
     width: 100%;
-    padding: 15px;
-    background-color: #00a8ff;
-    color: white;
+    padding: 18px;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-neon));
+    color: #040509;
     border: none;
-    border-radius: 8px;
-    font-weight: bold;
+    border-radius: 12px;
+    font-weight: 700;
     font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: var(--transition-smooth);
+    margin-top: 15px;
 }
 
 .btn-submit:hover {
-    background-color: #008be6;
-    box-shadow: 0 0 20px rgba(0, 168, 255, 0.4);
+    box-shadow: 0 10px 30px var(--accent-glow);
+    transform: translateY(-3px);
 }
 
-/* 10. Footer */
+/* 10. Footer - Panneau Flou en bas */
 footer {
-    background-color: rgba(15, 23, 42, 0.95);
+    background-color: var(--bg-panel);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     text-align: center;
-    padding: 50px 20px;
-    margin-top: 60px;
+    padding: 60px 20px;
+    margin-top: 100px;
+    border-top: 1px solid var(--border-glass);
 }
 
-.btn-social {
-    color: #00a8ff;
-    text-decoration: none;
-    border: 1px solid #00a8ff;
-    padding: 10px 20px;
-    border-radius: 6px;
-    margin: 10px;
-    display: inline-block;
+.social-links {
+    margin: 30px 0;
+}
+
+/* Style spécifique pour les liens sociaux */
+.social-links .btn {
+    border-color: var(--border-glass);
+    color: var(--text-secondary);
+    margin: 0 10px;
+}
+
+.social-links .btn:hover {
+    border-color: var(--accent-neon);
+    color: #040509;
+    background-color: var(--accent-neon);
+}
+
+.copyright {
+    color: #4b5563;
+    margin-top: 25px;
+    font-size: 0.8rem;
 }
 
 /* 11. Responsive Mobile */
 @media (max-width: 768px) {
-    nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
-    .hero h1 { font-size: 1.8rem; }
-    .grid-container { grid-template-columns: 1fr; }
+    nav {
+        padding: 10px 20px;
+        top: 10px;
+        width: calc(100% - 20px);
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        font-size: 0.8rem;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .section {
+        padding: 80px 20px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
 }
