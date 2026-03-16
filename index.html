@@ -31,7 +31,7 @@
             background-size: 50px 50px;
             color: var(--text-primary);
             line-height: 1.6;
-            scroll-behavior: smooth; /* Permet un défilement fluide quand on clique sur le menu */
+            scroll-behavior: smooth;
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -50,32 +50,20 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* --- NOUVEAU LOGO TERMINAL (CLIQUABLE) --- */
         .logo { 
             font-family: 'Consolas', 'Courier New', monospace; 
             font-size: 1.3rem; 
             font-weight: 700; 
             letter-spacing: 0px; 
             text-transform: lowercase; 
-            text-decoration: none; /* Empêche le soulignement car c'est un lien */
+            text-decoration: none;
         }
-        .logo .user { 
-            color: #39ff14; /* Vert fluo */
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); 
-        }
-        .logo .at { 
-            color: var(--text-primary); 
-        }
-        .logo .host { 
-            color: var(--accent-neon); /* Bleu néon */
-            text-shadow: 0 0 10px var(--accent-glow); 
-        }
-        .logo .cursor-blink {
-            color: var(--accent-neon);
-            animation: blink 1s step-end infinite;
-        }
+        .logo .user { color: #39ff14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
+        .logo .at { color: var(--text-primary); }
+        .logo .host { color: var(--accent-neon); text-shadow: 0 0 10px var(--accent-glow); }
+        .logo .cursor-blink { color: var(--accent-neon); animation: blink 1s step-end infinite; }
 
-        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links { list-style: none; display: flex; gap: 25px; }
         .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 5px var(--accent-neon); }
 
@@ -112,13 +100,19 @@
         .cursor { display: inline-block; width: 8px; height: 18px; background-color: #39ff14; vertical-align: middle; animation: blink 1s step-end infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
+        /* --- COMPETENCES (BARRES DE PROGRESSION) --- */
+        .skill-item { margin-bottom: 20px; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-primary); font-weight: 500; }
+        .skill-bar-bg { width: 100%; height: 8px; background: rgba(0, 0, 0, 0.4); border-radius: 10px; border: 1px solid var(--border-glass); overflow: hidden; }
+        .skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent-purple), var(--accent-neon)); border-radius: 10px; box-shadow: 0 0 10px var(--accent-glow); }
+
         /* --- PROJETS ET CARTES --- */
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .card { background: var(--bg-panel); backdrop-filter: blur(10px); padding: 30px; border-radius: 16px; border: 1px solid var(--border-glass); transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; opacity: 0; transform: translateY(30px); }
         .card::after { content: ''; position: absolute; width: 100px; height: 100px; background: var(--accent-glow); border-radius: 50%; filter: blur(30px); opacity: 0; transition: var(--transition-smooth); top: -50px; right: -50px; z-index: -1; }
         .card:hover { transform: translateY(-8px); border-color: rgba(0, 242, 254, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
         .card:hover::after { opacity: 1; }
-        .card h3 { margin-bottom: 15px; font-size: 1.3rem; color: var(--text-primary); }
+        .card h3 { margin-bottom: 20px; font-size: 1.3rem; color: var(--text-primary); }
         .card p { color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; flex-grow: 1; }
         
         .badge { display: inline-block; background-color: rgba(255, 255, 255, 0.03); color: var(--text-secondary); padding: 6px 14px; border-radius: 40px; font-size: 0.75rem; font-weight: 500; margin: 0 6px 8px 0; border: 1px solid var(--border-glass); }
@@ -160,6 +154,7 @@
         </a>
         <ul class="nav-links">
             <li><a href="#about">À Propos</a></li>
+            <li><a href="#competences">Compétences</a></li>
             <li><a href="#projets">Projets</a></li>
             <li><a href="#certifications">Certifications</a></li>
             <li><a href="#veille">Veille</a></li>
@@ -174,7 +169,7 @@
             <p>Étudiant en BTS SIO option SISR, passionné par l'infrastructure, la sécurité et l'automatisation. Mon objectif est de concevoir, administrer et sécuriser des systèmes et réseaux performants.</p>
             <div style="margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                 <a href="#projets" class="btn">Voir mes réalisations</a>
-                <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="border-color: #fbbc04; color: #fbbc04;">📊 Tableau de Synthèse E6</a>
+                <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="border-color: #fbbc04; color: #fbbc04;">📊 Tableau de Synthèse E5</a>
             </div>
         </div>
     </header>
@@ -200,6 +195,64 @@
                 <div class="terminal-body" id="terminal-content">
                     </div>
             </div>
+        </div>
+    </section>
+
+    <section id="competences" class="section">
+        <h2 class="section-title">Mes Compétences</h2>
+        <div class="grid-container">
+            
+            <div class="card">
+                <h3>🌐 Réseau & Infrastructure</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-info"><span>Commutation & Routage (Cisco)</span><span>85%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Services TCP/IP (DNS, DHCP)</span><span>90%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>VLAN & Interconnexion</span><span>80%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🖥️ Systèmes & Virtualisation</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-info"><span>Windows Server & Active Directory</span><span>90%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Déploiement (WDS / MDT)</span><span>85%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Environnement Linux (Debian)</span><span>75%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%;"></div></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🛡️ Sécurité & Outils Support</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-info"><span>Stratégies de Groupe (GPO)</span><span>85%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Ticketing & Inventaire (GLPI)</span><span>95%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Pare-feu (Stormshield)</span><span>70%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 70%;"></div></div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -477,7 +530,7 @@
         var form = document.getElementById("my-form");
         
         async function handleSubmit(event) {
-            event.preventDefault(); // Empêche l'ouverture de la page Formspree
+            event.preventDefault(); 
             var status = document.getElementById("my-form-status");
             var btn = document.getElementById("my-form-button");
             var data = new FormData(event.target);
@@ -496,7 +549,7 @@
                 if (response.ok) {
                     status.innerHTML = "✅ Merci ! Votre message a été envoyé avec succès.";
                     status.style.color = "var(--accent-neon)";
-                    form.reset(); // Vide le formulaire
+                    form.reset(); 
                 } else {
                     status.innerHTML = "❌ Erreur lors de l'envoi. Veuillez réessayer.";
                     status.style.color = "#ff5f56";
