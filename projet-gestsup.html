@@ -7,118 +7,161 @@
     
     <style>
         /* ============================================================
-           PORTFOLIO ALEXANDRE BARREY - MODERN GLASSMORPHISM (SISR)
-           Style Unique pour les Pages de Détails de Projet
+           PORTFOLIO ALEXANDRE BARREY - VUE DASHBOARD (NO-SCROLL)
            ============================================================ */
 
-        /* 1. Variables Globales & Reset */
         :root {
             --bg-dark: #040509;
             --bg-panel: rgba(255, 255, 255, 0.03);
             --border-glass: rgba(255, 255, 255, 0.08);
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
-            --accent-neon: #00f2fe; /* Bleu Néon Électrique */
+            --accent-neon: #00f2fe;
             --accent-glow: rgba(0, 242, 254, 0.3);
             --accent-purple: #4facfe;
-            --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --transition-smooth: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 
-        /* Style Global Body */
+        /* BODY CONFIGURÉ POUR PRENDRE EXACTEMENT 100% DE L'ÉCRAN */
         body {
             background-color: var(--bg-dark);
             background-image: linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
             background-size: 50px 50px;
             color: var(--text-primary);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-            min-height: 100vh;
-            padding-top: 120px; /* Espace pour la nav fixe */
+            line-height: 1.5;
+            height: 100vh; /* Hauteur fixe de l'écran */
+            overflow: hidden; /* BLOQUE LE SCROLL DE LA PAGE */
+            display: flex;
+            flex-direction: column;
         }
 
-        /* 3. Navigation style "Pill" */
+        /* Barre de défilement personnalisée pour l'intérieur des cartes */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-glass); border-radius: 3px; }
+
+        /* Navigation intégrée dans le flux */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 40px; background-color: rgba(4, 5, 9, 0.7);
+            padding: 10px 30px; background-color: rgba(4, 5, 9, 0.7);
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            position: fixed; width: calc(100% - 40px); max-width: 1400px;
-            top: 20px; left: 50%; transform: translateX(-50%);
-            z-index: 1000; border-radius: 100px;
+            width: 98%; max-width: 1600px;
+            margin: 15px auto 5px auto;
+            border-radius: 100px;
             border: 1px solid var(--border-glass);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
         }
 
-        .logo { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px var(--accent-glow); }
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px var(--accent-glow); }
         .nav-links { list-style: none; display: flex; gap: 30px; }
         .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 5px var(--accent-neon); }
 
-        /* Outil pour masquer la barre de défilement tout en gardant le scroll */
-        ::-webkit-scrollbar { width: 6px; background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border-glass); border-radius: 3px; }
+        /* Section principale qui prend le reste de l'espace */
+        .section { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            padding: 10px 20px 0 20px; 
+            max-width: 1600px; 
+            margin: auto; 
+            width: 100%;
+            overflow: hidden;
+        }
 
-        /* Section et Cartes Glassmorphism */
-        .section { padding: 80px 20px; max-width: 1200px; margin: auto; }
-        .section-title { text-align: left; margin-bottom: 50px; font-size: 2.5rem; font-weight: 900; color: var(--text-primary); position: relative; padding-left: 20px; }
+        .section-title { font-size: 1.8rem; font-weight: 900; color: var(--text-primary); position: relative; padding-left: 15px; margin-bottom: 15px; flex-shrink: 0; }
         .section-title::before { content: ''; position: absolute; left: 0; top: 5px; height: 80%; width: 3px; background: linear-gradient(to bottom, var(--accent-purple), var(--accent-neon)); border-radius: 2px; }
 
+        /* GRILLE DU DASHBOARD : 2 COLONNES */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr; /* La colonne de droite (images) est plus large */
+            gap: 20px;
+            flex: 1;
+            overflow: hidden; /* Rien ne dépasse */
+            padding-bottom: 15px;
+        }
+
+        .col-left { display: flex; flex-direction: column; gap: 20px; overflow: hidden; }
+        .col-right { display: flex; flex-direction: column; overflow: hidden; }
+
+        /* Cartes Glassmorphism */
         .card {
             background: var(--bg-panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            padding: 40px; border-radius: 24px; border: 1px solid var(--border-glass);
-            transition: var(--transition-smooth); position: relative; overflow: hidden;
-            margin-bottom: 40px;
+            padding: 20px 25px; border-radius: 20px; border: 1px solid var(--border-glass);
+            position: relative; 
+            overflow-y: auto; /* Permet un scroll UNIQUEMENT dans la carte si besoin */
         }
+        
+        .col-left .card { flex: 1; } /* Les cartes de gauche se partagent la hauteur */
+        .col-right .card { flex: 1; display: flex; flex-direction: column; }
 
-        /* Lueur subtile en haut à droite au survol */
-        .card::after { content: ''; position: absolute; width: 100px; height: 100px; background: var(--accent-glow); border-radius: 50%; filter: blur(30px); opacity: 0; transition: var(--transition-smooth); top: -50px; right: -50px; }
-        .card:hover { border-color: rgba(0, 242, 254, 0.2); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+        .card::after { content: ''; position: absolute; width: 80px; height: 80px; background: var(--accent-glow); border-radius: 50%; filter: blur(30px); opacity: 0; transition: var(--transition-smooth); top: -40px; right: -40px; z-index: -1;}
+        .card:hover { border-color: rgba(0, 242, 254, 0.2); }
         .card:hover::after { opacity: 1; }
 
-        .card h2 { margin-bottom: 25px; font-size: 1.8rem; font-weight: 800; color: var(--text-primary); }
-        .card p { color: var(--text-secondary); margin-bottom: 30px; font-size: 1.05rem; max-width: 800px; }
+        .card h2 { margin-bottom: 15px; font-size: 1.3rem; font-weight: 800; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); margin-bottom: 10px; font-size: 0.95rem; }
 
-        /* Style pour les preuves visuelles techniques */
+        /* Conteneur des images optimisé pour la hauteur de l'écran */
         .media-container {
-            margin: 40px 0; text-align: center;
-            border: 1px solid var(--border-glass); border-radius: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid var(--border-glass); border-radius: 12px;
             padding: 15px; background: rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            overflow: hidden;
         }
 
-        .media-container img {
-            max-width: 60%; /* RÉDUIT LA TAILLE ICI (60% du conteneur) */
-            height: auto; display: block;
-            margin: 0 auto; /* CENTRE L'IMAGE HORIZONTALEMENT */
-            border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        .media-grid-2 {
+            display: flex;
+            gap: 15px;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-grid-2 figure {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .media-grid-2 img {
+            max-width: 100%;
+            max-height: 40vh; /* L'image ne dépassera jamais 40% de la hauteur de l'écran */
+            object-fit: contain; /* Garde les proportions sans déformer */
+            border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
             border: 1px solid var(--border-glass); transition: transform 0.3s;
         }
 
-        .media-container img:hover { transform: scale(1.02); border-color: var(--accent-neon); }
-        .media-caption { font-style: italic; color: #64748b; font-size: 0.9rem; margin-top: 15px; display: block; }
+        .media-grid-2 img:hover { transform: scale(1.02); border-color: var(--accent-neon); }
+        .media-caption { font-style: italic; color: #64748b; font-size: 0.8rem; margin-top: 10px; text-align: center; }
 
-        /* Style pour les badges de compétences Tech */
-        .skill-list { list-style: none; display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-        .skill-badge {
-            background-color: rgba(255, 255, 255, 0.03); color: var(--text-primary);
-            padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600;
-            border: 1px solid var(--border-glass); transition: 0.3s;
-        }
-        .skill-badge:hover { border-color: rgba(0, 242, 254, 0.1); box-shadow: 0 0 10px var(--accent-glow); color: var(--accent-neon); }
+        .skill-list { list-style: none; display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+        .skill-badge { background-color: rgba(255, 255, 255, 0.03); color: var(--text-primary); padding: 5px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border-glass); }
 
-        /* Footer */
-        footer { text-align: center; padding: 60px 20px; margin-top: 100px; border-top: 1px solid var(--border-glass); }
-        footer p { color: #4b5563; font-size: 0.85rem; }
+        /* Footer réduit au minimum */
+        footer { text-align: center; padding: 10px; border-top: 1px solid var(--border-glass); flex-shrink: 0; }
+        footer p { color: #4b5563; font-size: 0.75rem; }
 
-        /* Responsive Mobile */
-        @media (max-width: 768px) {
-            nav { padding: 10px 20px; top: 10px; width: calc(100% - 20px); flex-direction: column; gap: 10px; border-radius: 20px; }
-            .logo { font-size: 1.1rem; }
-            .nav-links { gap: 15px; font-size: 0.8rem; }
-            .section-title { font-size: 2rem; }
-            .card { padding: 25px; border-radius: 16px; }
-            .card h2 { font-size: 1.5rem; }
-            .media-container img { max-width: 90%; } /* Un peu plus large sur mobile */
+        /* Responsive Mobile : On annule le "No-Scroll" car c'est impossible sur un petit écran */
+        @media (max-width: 900px) {
+            body { height: auto; overflow: auto; }
+            .dashboard-grid { grid-template-columns: 1fr; display: flex; flex-direction: column;}
+            .media-grid-2 { flex-direction: column; }
+            .media-grid-2 figure { width: 100%; }
+            .media-grid-2 img { max-height: none; width: 100%; }
+            .card { overflow: visible; }
         }
     </style>
 </head>
@@ -134,31 +177,50 @@
     <section class="section">
         <h1 class="section-title">Déploiement Serveur Gestsup (Ticketing)</h1>
         
-        <div class="card">
-            <h2>1. Contexte et Objectif Rapide</h2>
-            <p>Mise en place d'une solution de helpdesk et de gestion d'incidents (WAMP/LAMP Stack). L'objectif est de centraliser et de suivre les demandes d'assistance des utilisateurs afin d'optimiser le temps de résolution de l'équipe informatique.</p>
-            <p>J'ai réalisé l'installation et la configuration du serveur (Apache, PHP, MariaDB) ainsi que la personnalisation de l'outil Gestsup pour répondre aux besoins spécifiques de l'organisation.</p>
-        </div>
-
-        <div class="card">
-            <h2>2. Preuves Techniques de Réalisation (E6)</h2>
+        <div class="dashboard-grid">
             
-            <div class="media-container">
-                <img src="20250626_140600.jpg" alt="Preuve technique Gestsup : Interface de création de ticket">
-                <span class="media-caption">Aperçu de l'interface technique de création de ticket d'incident. Projet 'Lycée BEL AIR'.</span>
-            </div>
-            <p>Cette capture d'écran montre l'interface fonctionnelle de Gestsup que j'ai configurée. Elle prouve que le serveur web et la base de données sont correctement liés, permettant aux utilisateurs d'envoyer des requêtes techniques à l'administrateur.</p>
-        </div>
+            <div class="col-left">
+                <div class="card">
+                    <h2>1. Contexte et Objectif</h2>
+                    <p>Mise en place d'une solution de helpdesk et de gestion d'incidents (WAMP/LAMP Stack). L'objectif est de centraliser et de suivre les demandes d'assistance des utilisateurs afin d'optimiser le temps de résolution de l'équipe informatique.</p>
+                    <p>Installation et configuration du serveur (Apache, PHP, MariaDB) ainsi que personnalisation de l'outil Gestsup.</p>
+                </div>
 
-        <div class="card">
-            <h2>3. Compétences Validées (Référentiel SISR)</h2>
-            <p>Ce projet s'inscrit principalement dans le Bloc 1 : Support et mise à disposition de services informatiques.</p>
-            <ul class="skill-list">
-                <li class="skill-badge">✅ Collecter, suivre et orienter les demandes (Bloc 1)</li>
-                <li class="skill-badge">✅ Gérer les incidents et les demandes d’assistance (Bloc 1)</li>
-                <li class="skill-badge">✅ Travailler en mode projet (Bloc 1)</li>
-                <li class="skill-badge">✅ Accompagner les utilisateurs (Bloc 1)</li>
-            </ul>
+                <div class="card">
+                    <h2>3. Compétences Validées</h2>
+                    <p>Bloc 1 : Support et mise à disposition de services IT.</p>
+                    <ul class="skill-list">
+                        <li class="skill-badge">✅ Suivre et orienter les demandes</li>
+                        <li class="skill-badge">✅ Gérer les incidents</li>
+                        <li class="skill-badge">✅ Travailler en mode projet</li>
+                        <li class="skill-badge">✅ Accompagner les utilisateurs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-right">
+                <div class="card">
+                    <h2>2. Preuves Techniques et Gestion de Projet (E6)</h2>
+                    
+                    <div class="media-container">
+                        <div class="media-grid-2">
+                            <figure>
+                                <img src="image_5.jpg" alt="Interface de Gestsup">
+                                <figcaption class="media-caption">Interface de Gestsup fonctionnelle.</figcaption>
+                            </figure>
+
+                            <figure>
+                                <img src="20250626_140600.jpg" alt="Diagramme de Gantt">
+                                <figcaption class="media-caption">Planification du projet (Gantt).</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    
+                    <p><strong>Photo 1 :</strong> Capture prouvant que le serveur web et la base de données sont liés et opérationnels.</p>
+                    <p><strong>Photo 2 :</strong> Diagramme de Gantt démontrant ma capacité à structurer les phases d'installation et de tests.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
