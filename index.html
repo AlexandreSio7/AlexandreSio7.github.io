@@ -249,15 +249,84 @@
     </section>
 
     <section id="veille" class="section">
-        <h2 class="section-title">Veille Technologique</h2>
+        <h2 class="section-title">Veille Technologique (2026)</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 40px; font-size: 1.1rem; max-width: 900px;">
+            Thème principal : <strong>L'évolution des performances, de la sécurité et de l'automatisation dans les infrastructures systèmes.</strong>
+        </p>
+        
         <div class="grid-container">
+            
             <div class="card">
-                <span class="badge" style="color: #fbbc04; border-color: #fbbc04;">Thème Principal</span>
-                <h3>L'évolution des ransomwares en 2025</h3>
-                <p>Analyse des nouvelles techniques d'extorsion utilisées par les groupes de hackers et comment les infrastructures réseau doivent s'adapter pour s'en prémunir.</p>
-                <a href="#" class="btn btn-view" style="border-color: #fbbc04; color: #fbbc04;">Lire mon analyse</a>
+                <h3>💾 Windows Server 2025 : Révolution NVMe</h3>
+                <div style="margin-bottom: 15px;">
+                    <span class="badge" style="color: #00f2fe; border-color: rgba(0, 242, 254, 0.3);">Stockage</span>
+                    <span class="badge" style="color: #39ff14; border-color: rgba(57, 255, 20, 0.3);">Performance</span>
+                </div>
+                <p><strong>L'actualité :</strong> Microsoft abandonne l'ancienne pile SCSI au profit du pilote natif NVMeDisk.sys.</p>
+                <p><strong>Impact SISR :</strong> Cette refonte totale de la pile de stockage permet des gains massifs en production : jusqu'à 80% d'IOPS en plus et une baisse de 12% de la charge CPU sur les serveurs.</p>
+                
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
+                    <ul style="list-style-type: none; font-size: 0.85rem; line-height: 1.8;">
+                        <li>🔗 <a href="https://www.storagereview.com/review/windows-server-native-nvme" target="_blank" style="color: var(--accent-neon); text-decoration: none;">StorageReview : Benchmarks Native NVMe</a></li>
+                        <li>🔗 <a href="https://www.starwindsoftware.com/blog/windows-server-native-nvme-support/" target="_blank" style="color: var(--accent-neon); text-decoration: none;">StarWind : Windows Server Support</a></li>
+                    </ul>
+                </div>
             </div>
+
+            <div class="card">
+                <h3>🛡️ Transition Secure Boot & Patching</h3>
+                <div style="margin-bottom: 15px;">
+                    <span class="badge" style="color: #ff8833; border-color: rgba(255, 102, 0, 0.3);">Cybersécurité</span>
+                    <span class="badge" style="color: #4facfe; border-color: rgba(79, 172, 254, 0.3);">Infrastructure</span>
+                </div>
+                <p><strong>L'actualité :</strong> Expiration critique des certificats Secure Boot de 2011 prévue pour juin et octobre 2026, nécessitant une migration vers les CA 2023.</p>
+                <p><strong>Impact SISR :</strong> Les administrateurs doivent anticiper cette transition et patcher les failles critiques pour éviter que les serveurs et postes clients ne refusent de démarrer (Écran noir).</p>
+                
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
+                    <ul style="list-style-type: none; font-size: 0.85rem; line-height: 1.8;">
+                        <li>🔗 <a href="https://support.microsoft.com/en-us/topic/secure-boot-certificate-updates-guidance-for-it-professionals-and-organizations-e2b43f9f-b424-42df-bc6a-8476db65ab2f" target="_blank" style="color: var(--accent-neon); text-decoration: none;">Microsoft Support : IT Guidance</a></li>
+                    </ul>
+                </div>
             </div>
+
+            <div class="card">
+                <h3>🐧 L'arrivée du Linux Kernel 7.0</h3>
+                <div style="margin-bottom: 15px;">
+                    <span class="badge" style="color: #fbbc04; border-color: rgba(251, 188, 4, 0.3);">Système Libre</span>
+                    <span class="badge" style="color: #39ff14; border-color: rgba(57, 255, 20, 0.3);">Optimisation</span>
+                </div>
+                <p><strong>L'actualité :</strong> Linus Torvalds annonce le passage à la branche 7.x, intégrant notamment NTSYNC et l'optimisation mémoire "slub sheaves".</p>
+                <p><strong>Impact SISR :</strong> Ces avancées préparent les systèmes Linux à mieux gérer les charges de travail modernes et facilitent l'intégration d'outils d'IA agentique au niveau de l'OS.</p>
+                
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
+                    <ul style="list-style-type: none; font-size: 0.85rem; line-height: 1.8;">
+                        <li>🔗 <a href="https://www.kernel.org/" target="_blank" style="color: var(--accent-neon); text-decoration: none;">The Linux Kernel Archives</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>🤖 AIOps et IA Agentique via MCP</h3>
+                <div style="margin-bottom: 15px;">
+                    <span class="badge" style="color: #00f2fe; border-color: rgba(0, 242, 254, 0.3);">Automatisation</span>
+                    <span class="badge" style="color: #4facfe; border-color: rgba(79, 172, 254, 0.3);">Supervision</span>
+                </div>
+                <p><strong>L'actualité :</strong> L'émergence des systèmes multi-agents capables de prendre des décisions autonomes dans la gestion IT, propulsée par le standard MCP.</p>
+                <p><strong>Impact SISR :</strong> L'AIOps transforme le support. Les agents IA peuvent désormais se connecter en temps réel aux outils d'infrastructure pour diagnostiquer et résoudre les incidents réseau.</p>
+                
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
+                    <ul style="list-style-type: none; font-size: 0.85rem; line-height: 1.8;">
+                        <li>🔗 <a href="https://www.redhat.com/fr/topics/ai/what-is-model-context-protocol-mcp" target="_blank" style="color: var(--accent-neon); text-decoration: none;">Red Hat : Le protocole MCP</a></li>
+                        <li>🔗 <a href="https://gblogs.cisco.com/ch-tech/mcp-protocol-ai-network-operations/" target="_blank" style="color: var(--accent-neon); text-decoration: none;">Cisco Blogs : MCP Protocol Revolution</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
     </section>
 
     <section id="contact" class="section">
