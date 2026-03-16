@@ -8,6 +8,7 @@
     <style>
         /* ============================================================
            PORTFOLIO ALEXANDRE BARREY - VUE DASHBOARD (NO-SCROLL)
+           Correctif des barres de défilement (Scrollbars)
            ============================================================ */
 
         :root {
@@ -24,25 +25,20 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 
-        /* BODY CONFIGURÉ POUR PRENDRE EXACTEMENT 100% DE L'ÉCRAN */
+        /* BODY 100% ECRAN - SANS SCROLL GLOBAL */
         body {
             background-color: var(--bg-dark);
             background-image: linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
             background-size: 50px 50px;
             color: var(--text-primary);
             line-height: 1.5;
-            height: 100vh; /* Hauteur fixe de l'écran */
-            overflow: hidden; /* BLOQUE LE SCROLL DE LA PAGE */
+            height: 100vh; 
+            overflow: hidden; /* Empêche la page entière de scroller */
             display: flex;
             flex-direction: column;
         }
 
-        /* Barre de défilement personnalisée pour l'intérieur des cartes */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: var(--border-glass); border-radius: 3px; }
-
-        /* Navigation intégrée dans le flux */
+        /* Navigation */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 10px 30px; background-color: rgba(4, 5, 9, 0.7);
@@ -60,7 +56,7 @@
         .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 5px var(--accent-neon); }
 
-        /* Section principale qui prend le reste de l'espace */
+        /* Section principale */
         .section { 
             flex: 1; 
             display: flex; 
@@ -78,25 +74,32 @@
         /* GRILLE DU DASHBOARD : 2 COLONNES */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr 1.6fr; /* La colonne de droite (images) est plus large */
+            grid-template-columns: 1fr 1.6fr; 
             gap: 20px;
             flex: 1;
-            overflow: hidden; /* Rien ne dépasse */
+            overflow: hidden; 
             padding-bottom: 15px;
         }
 
         .col-left { display: flex; flex-direction: column; gap: 20px; overflow: hidden; }
         .col-right { display: flex; flex-direction: column; overflow: hidden; }
 
-        /* Cartes Glassmorphism */
+        /* Cartes Glassmorphism avec correctif de scroll */
         .card {
             background: var(--bg-panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
             padding: 20px 25px; border-radius: 20px; border: 1px solid var(--border-glass);
             position: relative; 
-            overflow-y: auto; /* Permet un scroll UNIQUEMENT dans la carte si besoin */
+            overflow-y: auto; /* Scroll vertical autorisé à l'intérieur de la carte */
+            overflow-x: hidden; /* BLOQUE la vilaine barre horizontale en bas */
+            overflow-wrap: break-word; /* Empêche les mots trop longs de casser la mise en page */
         }
         
-        .col-left .card { flex: 1; } /* Les cartes de gauche se partagent la hauteur */
+        /* Personnalisation de la barre de scroll pour ne pas casser les bords arrondis */
+        .card::-webkit-scrollbar { width: 6px; }
+        .card::-webkit-scrollbar-track { background: transparent; margin: 15px; } /* Marge pour éloigner des bords arrondis */
+        .card::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        
+        .col-left .card { flex: 1; } 
         .col-right .card { flex: 1; display: flex; flex-direction: column; }
 
         .card::after { content: ''; position: absolute; width: 80px; height: 80px; background: var(--accent-glow); border-radius: 50%; filter: blur(30px); opacity: 0; transition: var(--transition-smooth); top: -40px; right: -40px; z-index: -1;}
@@ -106,7 +109,7 @@
         .card h2 { margin-bottom: 15px; font-size: 1.3rem; font-weight: 800; color: var(--text-primary); }
         .card p { color: var(--text-secondary); margin-bottom: 10px; font-size: 0.95rem; }
 
-        /* Conteneur des images optimisé pour la hauteur de l'écran */
+        /* Conteneur des images optimisé */
         .media-container {
             flex: 1;
             display: flex;
@@ -134,12 +137,13 @@
             align-items: center;
             justify-content: center;
             margin: 0;
+            overflow: hidden;
         }
 
         .media-grid-2 img {
             max-width: 100%;
-            max-height: 40vh; /* L'image ne dépassera jamais 40% de la hauteur de l'écran */
-            object-fit: contain; /* Garde les proportions sans déformer */
+            max-height: 45vh; /* Taille max sur l'écran */
+            object-fit: contain;
             border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
             border: 1px solid var(--border-glass); transition: transform 0.3s;
         }
@@ -150,11 +154,10 @@
         .skill-list { list-style: none; display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
         .skill-badge { background-color: rgba(255, 255, 255, 0.03); color: var(--text-primary); padding: 5px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border-glass); }
 
-        /* Footer réduit au minimum */
         footer { text-align: center; padding: 10px; border-top: 1px solid var(--border-glass); flex-shrink: 0; }
         footer p { color: #4b5563; font-size: 0.75rem; }
 
-        /* Responsive Mobile : On annule le "No-Scroll" car c'est impossible sur un petit écran */
+        /* Responsive Mobile */
         @media (max-width: 900px) {
             body { height: auto; overflow: auto; }
             .dashboard-grid { grid-template-columns: 1fr; display: flex; flex-direction: column;}
@@ -205,12 +208,12 @@
                     <div class="media-container">
                         <div class="media-grid-2">
                             <figure>
-                                <img src="image_5.jpg" alt="Interface de Gestsup">
+                                <img src="20250626_140600.jpg" alt="Interface de Gestsup">
                                 <figcaption class="media-caption">Interface de Gestsup fonctionnelle.</figcaption>
                             </figure>
 
                             <figure>
-                                <img src="20250626_140600.jpg" alt="Diagramme de Gantt">
+                                <img src="gantt.jpg" alt="Diagramme de Gantt (En cours...)">
                                 <figcaption class="media-caption">Planification du projet (Gantt).</figcaption>
                             </figure>
                         </div>
