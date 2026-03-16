@@ -6,9 +6,9 @@
 ![Cybersécurité](https://img.shields.io/badge/Cybersécurité-Stormshield-orange?style=for-the-badge)
 
 Bienvenue sur le dépôt source de mon portfolio numérique. 
-Je m'appelle **Alexandre Barrey**, étudiant en **BTS SIO** (Services Informatiques aux Organisations), spécialité **SISR** (Solutions d'Infrastructure, Systèmes et Réseaux) - Promotion 2026.
+Je m'appelle **Alexandre Barrey**, étudiant en **BTS SIO** (Services Informatiques aux Organisations), spécialité **SISR** (Solutions d'Infrastructure, Systèmes et Réseaux).
 
-Ce site a été conçu, développé et hébergé par mes soins pour présenter mes compétences techniques, mes projets de formation et ma veille technologique dans le cadre de l'**épreuve E6**.
+Ce site a été conçu, développé et hébergé par mes soins pour présenter mes compétences techniques, mes projets de formation et ma veille technologique dans le cadre de l'**épreuve E5**.
 
 👉 **[VOIR LE PORTFOLIO EN LIGNE](https://alexandresio7.github.io/)**
 
@@ -39,7 +39,7 @@ Ce projet est versionné avec **Git** et déployé en intégration continue via 
 
 Si vous souhaitez échanger sur mon profil, mes projets ou une opportunité professionnelle :
 * **LinkedIn :** [Alexandre Barrey](https://www.linkedin.com/in/alexandre-barrey-a35454328/)
-* **Tableau de Synthèse E6 :** [Consulter mon tableau de compétences](https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing)
+* **Tableau de Synthèse E5 :** [Consulter mon tableau de compétences](https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing)
 
 ---
 *© 2026 - Alexandre Barrey*
