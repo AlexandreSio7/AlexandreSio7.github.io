@@ -3,10 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet WDS/MDT - Alexandre Barrey</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Projet WDS / MDT - Alexandre Barrey</title>
+    
+    <style>
+        /* ============================================================
+           PORTFOLIO ALEXANDRE BARREY - VUE DASHBOARD + LIGHTBOX
+           ============================================================ */
+
+        :root {
+            --bg-dark: #040509;
+            --bg-panel: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-neon: #00f2fe;
+            --accent-glow: rgba(0, 242, 254, 0.3);
+            --accent-purple: #4facfe;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: var(--text-primary);
+            line-height: 1.5;
+            height: 100vh; 
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 30px; background-color: rgba(4, 5, 9, 0.7);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            width: 98%; max-width: 1600px;
+            margin: 15px auto 5px auto;
+            border-radius: 100px;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px var(--accent-glow); }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 5px var(--accent-neon); }
+
+        .section { 
+            flex: 1; display: flex; flex-direction: column; padding: 10px 20px 0 20px; 
+            max-width: 1600px; margin: auto; width: 100%; overflow: hidden;
+        }
+
+        .section-title { font-size: 1.8rem; font-weight: 900; color: var(--text-primary); position: relative; padding-left: 15px; margin-bottom: 15px; flex-shrink: 0; }
+        .section-title::before { content: ''; position: absolute; left: 0; top: 5px; height: 80%; width: 3px; background: linear-gradient(to bottom, var(--accent-purple), var(--accent-neon)); border-radius: 2px; }
+
+        .dashboard-grid {
+            display: grid; grid-template-columns: 1fr 1.6fr; gap: 20px; flex: 1; overflow: hidden; padding-bottom: 15px;
+        }
+        .col-left { display: flex; flex-direction: column; gap: 20px; overflow: hidden; }
+        .col-right { display: flex; flex-direction: column; overflow: hidden; }
+
+        .card {
+            background: var(--bg-panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            padding: 20px 25px; border-radius: 20px; border: 1px solid var(--border-glass); position: relative; 
+            overflow-y: auto; overflow-x: hidden; overflow-wrap: break-word;
+        }
+        .card::-webkit-scrollbar { width: 6px; }
+        .card::-webkit-scrollbar-track { background: transparent; margin: 15px; }
+        .card::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        
+        .col-left .card { flex: 1; } 
+        .col-right .card { flex: 1; display: flex; flex-direction: column; }
+        .card::after { content: ''; position: absolute; width: 80px; height: 80px; background: var(--accent-glow); border-radius: 50%; filter: blur(30px); opacity: 0; transition: var(--transition-smooth); top: -40px; right: -40px; z-index: -1;}
+        .card:hover { border-color: rgba(0, 242, 254, 0.2); }
+        .card:hover::after { opacity: 1; }
+        .card h2 { margin-bottom: 15px; font-size: 1.3rem; font-weight: 800; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); margin-bottom: 10px; font-size: 0.95rem; }
+
+        .media-container {
+            flex: 1; display: flex; flex-direction: column; justify-content: center;
+            border: 1px solid var(--border-glass); border-radius: 12px; padding: 15px; 
+            background: rgba(0,0,0,0.1); margin-bottom: 15px; overflow: hidden;
+        }
+        .media-grid-2 { display: flex; gap: 15px; height: 100%; align-items: center; justify-content: center; }
+        .media-grid-2 figure { width: 50%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0; overflow: hidden; }
+        
+        .media-grid-2 img {
+            max-width: 100%; max-height: 45vh; object-fit: contain;
+            border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            border: 1px solid var(--border-glass); transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .media-grid-2 img:hover { transform: scale(1.03); border-color: var(--accent-neon); }
+        .media-caption { font-style: italic; color: #64748b; font-size: 0.8rem; margin-top: 10px; text-align: center; }
+
+        /* MODAL ZOOOM */
+        .modal {
+            display: none; position: fixed; z-index: 2000; padding-top: 50px;
+            left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+            background-color: rgba(4, 5, 9, 0.9); backdrop-filter: blur(15px);
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal.show { opacity: 1; }
+        .modal-content {
+            margin: auto; display: block; max-width: 90%; max-height: 80vh;
+            border-radius: 12px; border: 1px solid var(--accent-neon);
+            box-shadow: 0 0 40px var(--accent-glow);
+        }
+        #caption { margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: var(--text-primary); padding: 20px 0; font-size: 1.2rem; }
+        .close-modal {
+            position: absolute; top: 20px; right: 40px; color: var(--text-secondary);
+            font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
+        }
+        .close-modal:hover, .close-modal:focus { color: var(--accent-neon); text-decoration: none; cursor: pointer; }
+
+        .skill-list { list-style: none; display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+        .skill-badge { background-color: rgba(255, 255, 255, 0.03); color: var(--text-primary); padding: 5px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border-glass); }
+
+        footer { text-align: center; padding: 10px; border-top: 1px solid var(--border-glass); flex-shrink: 0; }
+        footer p { color: #4b5563; font-size: 0.75rem; }
+
+        @media (max-width: 900px) {
+            body { height: auto; overflow: auto; }
+            .dashboard-grid { grid-template-columns: 1fr; display: flex; flex-direction: column;}
+            .media-grid-2 { flex-direction: column; }
+            .media-grid-2 figure { width: 100%; }
+            .media-grid-2 img { max-height: none; width: 100%; }
+            .card { overflow: visible; }
+        }
+    </style>
 </head>
 <body>
+
     <nav>
         <div class="logo">Alexandre B.</div>
         <ul class="nav-links">
@@ -14,48 +146,94 @@
         </ul>
     </nav>
 
-    <section class="section" style="margin-top: 100px;">
-        <h1 class="section-title">Déploiement Automatisé via WDS/MDT</h1>
+    <section class="section">
+        <h1 class="section-title">Déploiement Automatisé (WDS / MDT)</h1>
         
-        <div class="card" style="margin-bottom: 30px;">
-            <h3>📋 Contexte du projet</h3>
-            <p>Dans le cadre d'un parc informatique en expansion, l'installation manuelle de Windows sur chaque poste devenait trop chronophage. L'objectif était de mettre en place une solution de déploiement par le réseau (PXE).</p>
-        </div>
+        <div class="dashboard-grid">
+            
+            <div class="col-left">
+                <div class="card">
+                    <h2>1. Contexte et Objectif</h2>
+                    <p>Déploiement d'un environnement de travail complet sur un parc de machines clientes sans aucune intervention manuelle (Zero Touch).</p>
+                    <p>Le serveur <strong>WDS</strong> permet le boot par le réseau (PXE) via DHCP. Le serveur <strong>MDT</strong> prend ensuite le relais pour injecter l'image système (Windows 10/11), les pilotes, lier la machine au domaine Active Directory et installer les logiciels métiers de manière silencieuse.</p>
+                </div>
 
-        <div class="grid-container">
-            <div class="card">
-                <h3>🛠️ Réalisation Technique</h3>
-                <ul>
-                    <li>Installation et configuration du rôle <strong>Windows Deployment Services (WDS)</strong>.</li>
-                    <li>Configuration du serveur <strong>DHCP</strong> (Options 66 et 67) pour l'amorçage PXE.</li>
-                    <li>Capture et intégration d'images de démarrage (Boot.wim) et d'installation (Install.wim).</li>
-                    <li>Injection de pilotes réseau et stockage pour la compatibilité matérielle.</li>
-                </ul>
+                <div class="card">
+                    <h2>3. Compétences Validées (E6)</h2>
+                    <p>Bloc 1 : Support et mise à disposition de services IT.</p>
+                    <ul class="skill-list">
+                        <li class="skill-badge">✅ Mettre à disposition un environnement</li>
+                        <li class="skill-badge">✅ Automatiser le déploiement</li>
+                        <li class="skill-badge">✅ Administrer des services réseau</li>
+                        <li class="skill-badge">✅ Gérer le patrimoine informatique</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>✅ Compétences SISR validées</h3>
-                <span class="badge">B1.2 - Administration système</span>
-                <span class="badge">B2.1 - Support utilisateur</span>
-                <p style="margin-top: 15px;">Ce projet m'a permis de comprendre la gestion des flux réseaux PXE et l'optimisation du temps de préparation des postes clients.</p>
-            </div>
-        </div>
+            <div class="col-right">
+                <div class="card">
+                    <h2>2. Preuves Techniques et Fonctionnelles</h2>
+                    
+                    <div class="media-container">
+                        <div class="media-grid-2">
+                            <figure>
+                                <img src="capture-pxe.jpg" alt="Démarrage PXE sur le réseau" class="zoomable">
+                                <figcaption class="media-caption">Cliquez pour agrandir.</figcaption>
+                            </figure>
 
-        <div class="media-container" style="margin-top: 40px;">
-            <p class="media-caption">Installation d'un client via le réseau PXE (Exemple de maquette)</p>
-            <div style="background: #1e293b; padding: 50px; border-radius: 8px; border: 1px dashed #00a8ff;">
-                <p style="color: #00a8ff;">🖼️ [Ajoute ici une capture d'écran de ta console WDS]</p>
+                            <figure>
+                                <img src="capture-mdt.jpg" alt="Séquence de Tâches (Task Sequence) dans MDT" class="zoomable">
+                                <figcaption class="media-caption">Cliquez pour agrandir.</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    
+                    <p><strong>Photo 1 :</strong> Un poste client démarre sur le réseau en IPv4 (PXE) et récupère l'image de boot via le rôle WDS.</p>
+                    <p><strong>Photo 2 :</strong> Interface de la <em>Task Sequence</em> dans le Deployment Workbench (MDT), où j'ai configuré l'installation silencieuse des applications et l'intégration au domaine.</p>
+                </div>
             </div>
-        </div>
 
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="index.html#projets" class="btn">← Retour aux projets</a>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 - Alexandre Barrey</p>
+        <p>© 2026 - Alexandre Barrey - Portfolio BTS SIO SISR</p>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
+        const images = document.querySelectorAll(".zoomable");
+        const span = document.getElementsByClassName("close-modal")[0];
+
+        images.forEach(img => {
+            img.onclick = function(){
+                modal.style.display = "block";
+                setTimeout(() => { modal.classList.add("show"); }, 10);
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+        });
+
+        span.onclick = function() {
+            modal.classList.remove("show");
+            setTimeout(() => { modal.style.display = "none"; }, 300);
+        }
+
+        modal.onclick = function(e) {
+            if(e.target !== modalImg) {
+                modal.classList.remove("show");
+                setTimeout(() => { modal.style.display = "none"; }, 300);
+            }
+        }
+    </script>
 
 </body>
 </html>
