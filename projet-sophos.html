@@ -48,7 +48,21 @@
             flex-shrink: 0;
         }
 
-        .logo { font-size: 1.2rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px var(--accent-glow); }
+        /* --- NOUVEAU LOGO TERMINAL (CLIQUABLE) --- */
+        .logo { 
+            font-family: 'Consolas', 'Courier New', monospace; 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            letter-spacing: 0px; 
+            text-transform: lowercase; 
+            text-decoration: none; 
+        }
+        .logo .user { color: #39ff14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
+        .logo .at { color: var(--text-primary); }
+        .logo .host { color: var(--accent-neon); text-shadow: 0 0 10px var(--accent-glow); }
+        .logo .cursor-blink { color: var(--accent-neon); animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
         .nav-links { list-style: none; display: flex; gap: 30px; }
         .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 5px var(--accent-neon); }
@@ -140,7 +154,9 @@
 <body>
 
     <nav>
-        <div class="logo">Alexandre B.</div>
+        <a href="index.html" class="logo">
+            <span class="user">&gt;_ root</span><span class="at">@</span><span class="host">alexandre.b:~</span><span class="cursor-blink">_</span>
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">⬅ Retour à l'accueil</a></li>
         </ul>
