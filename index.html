@@ -50,13 +50,14 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* --- NOUVEAU LOGO TERMINAL --- */
+        /* --- NOUVEAU LOGO TERMINAL (CLIQUABLE) --- */
         .logo { 
             font-family: 'Consolas', 'Courier New', monospace; 
             font-size: 1.3rem; 
             font-weight: 700; 
             letter-spacing: 0px; 
             text-transform: lowercase; 
+            text-decoration: none; /* Empêche le soulignement car c'est un lien */
         }
         .logo .user { 
             color: #39ff14; /* Vert fluo */
@@ -154,11 +155,10 @@
 <body>
 
     <nav>
-        <div class="logo">
+        <a href="#accueil" class="logo">
             <span class="user">&gt;_ root</span><span class="at">@</span><span class="host">alexandre.b:~</span><span class="cursor-blink">_</span>
-        </div>
+        </a>
         <ul class="nav-links">
-            <li><a href="#accueil">Accueil</a></li>
             <li><a href="#about">À Propos</a></li>
             <li><a href="#projets">Projets</a></li>
             <li><a href="#certifications">Certifications</a></li>
@@ -174,7 +174,7 @@
             <p>Étudiant en BTS SIO option SISR, passionné par l'infrastructure, la sécurité et l'automatisation. Mon objectif est de concevoir, administrer et sécuriser des systèmes et réseaux performants.</p>
             <div style="margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                 <a href="#projets" class="btn">Voir mes réalisations</a>
-                <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="border-color: #fbbc04; color: #fbbc04;">📊 Tableau de Synthèse E5</a>
+                <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="border-color: #fbbc04; color: #fbbc04;">📊 Tableau de Synthèse E6</a>
             </div>
         </div>
     </header>
