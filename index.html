@@ -4,148 +4,367 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Alexandre Barrey - BTS SIO SISR</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* ============================================================
+           PORTFOLIO ALEXANDRE BARREY - ONE-PAGE GLASSMORPHISM
+           ============================================================ */
+
+        :root {
+            --bg-dark: #040509;
+            --bg-panel: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-neon: #00f2fe;
+            --accent-glow: rgba(0, 242, 254, 0.3);
+            --accent-purple: #4facfe;
+            --terminal-bg: rgba(10, 15, 25, 0.85);
+            --transition-smooth: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Permet un défilement fluide quand on clique sur le menu */
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border-glass); border-radius: 4px; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 40px; background-color: rgba(4, 5, 9, 0.8);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            position: fixed; width: calc(100% - 40px); max-width: 1400px;
+            top: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 1000; border-radius: 100px;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px var(--accent-glow); }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 5px var(--accent-neon); }
+
+        /* --- HERO SECTION --- */
+        .hero { height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; padding: 0 20px; position: relative; }
+        .hero::before { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); border-radius: 50%; filter: blur(60px); opacity: 0.4; z-index: -1; }
+        .hero h1 { font-size: 4rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.1; }
+        .hero h1 span { background: linear-gradient(90deg, var(--accent-purple), var(--accent-neon)); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: 0 0 30px var(--accent-glow); }
+        .hero h2 { font-size: 1.5rem; font-weight: 500; color: var(--text-primary); margin-top: 10px; }
+        .hero p { margin: 25px auto; max-width: 650px; font-size: 1.1rem; color: var(--text-secondary); }
+        
+        .btn { display: inline-block; padding: 12px 30px; background: transparent; color: var(--accent-neon); text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-neon); transition: var(--transition-smooth); cursor: pointer; }
+        .btn:hover { color: #040509; background-color: var(--accent-neon); box-shadow: 0 0 30px var(--accent-glow); transform: translateY(-2px); }
+
+        /* --- SECTIONS GLOBALES --- */
+        .section { padding: 100px 20px 40px 20px; max-width: 1200px; margin: auto; min-height: 80vh; }
+        .section-title { margin-bottom: 50px; font-size: 2.5rem; font-weight: 900; color: var(--text-primary); position: relative; padding-left: 20px; }
+        .section-title::before { content: ''; position: absolute; left: 0; top: 5px; height: 80%; width: 4px; background: linear-gradient(to bottom, var(--accent-purple), var(--accent-neon)); border-radius: 2px; }
+
+        /* --- A PROPOS / TERMINAL --- */
+        .grid-about { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: stretch; }
+        .about-text { background: var(--bg-panel); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 1px solid var(--border-glass); }
+        .about-text p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1.05rem; }
+        
+        .terminal-window { background: var(--terminal-bg); border-radius: 12px; border: 1px solid var(--border-glass); box-shadow: 0 15px 35px rgba(0,0,0,0.5); overflow: hidden; font-family: 'Consolas', 'Courier New', monospace; font-size: 0.95rem; display: flex; flex-direction: column; }
+        .terminal-header { background: rgba(0, 0, 0, 0.4); padding: 12px 15px; display: flex; align-items: center; border-bottom: 1px solid var(--border-glass); }
+        .term-dot { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+        .dot-red { background-color: #ff5f56; } .dot-yellow { background-color: #ffbd2e; } .dot-green { background-color: #27c93f; }
+        .term-title { margin-left: auto; margin-right: auto; color: #64748b; font-size: 0.85rem; padding-right: 60px; }
+        .terminal-body { padding: 20px; color: #e2e8f0; flex: 1; }
+        .prompt { color: #39ff14; font-weight: bold; } .cmd { color: #00f2fe; }
+        .output { color: #cbd5e1; margin-bottom: 15px; padding-left: 10px; border-left: 2px solid #334155; margin-top: 5px; }
+        .highlight-output { color: #fbbc04; font-weight: bold; }
+        .cursor { display: inline-block; width: 8px; height: 18px; background-color: #39ff14; vertical-align: middle; animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* --- PROJETS ET CARTES --- */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: var(--bg-panel); backdrop-filter: blur(10px); padding: 30px; border-radius: 16px; border: 1px solid var(--border-glass); transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; opacity: 0; transform: translateY(30px); }
+        .card::after { content: ''; position: absolute; width: 100px; height: 100px; background: var(--accent-glow); border-radius: 50%; filter: blur(30px); opacity: 0; transition: var(--transition-smooth); top: -50px; right: -50px; z-index: -1; }
+        .card:hover { transform: translateY(-8px); border-color: rgba(0, 242, 254, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
+        .card:hover::after { opacity: 1; }
+        .card h3 { margin-bottom: 15px; font-size: 1.3rem; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); margin-bottom: 25px; font-size: 0.95rem; flex-grow: 1; }
+        
+        .badge { display: inline-block; background-color: rgba(255, 255, 255, 0.03); color: var(--text-secondary); padding: 6px 14px; border-radius: 40px; font-size: 0.75rem; font-weight: 500; margin: 0 6px 8px 0; border: 1px solid var(--border-glass); }
+        .card:hover .badge { border-color: rgba(0, 242, 254, 0.2); color: var(--text-primary); }
+        .btn-view { margin-top: auto; align-self: flex-start; padding: 8px 20px; font-size: 0.8rem; }
+
+        /* --- CONTACT FORM --- */
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--bg-panel); padding: 40px; border-radius: 20px; border: 1px solid var(--border-glass); }
+        .contact-form { display: flex; flex-direction: column; gap: 20px; }
+        .contact-form div { display: flex; flex-direction: column; gap: 8px; }
+        .contact-form label { font-weight: 600; color: var(--text-secondary); font-size: 0.9rem; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 15px; border: 1px solid var(--border-glass); border-radius: 12px; background-color: rgba(0, 0, 0, 0.2); color: var(--text-primary); font-size: 1rem; transition: var(--transition-smooth); }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent-neon); box-shadow: 0 0 15px var(--accent-glow); }
+        .contact-form textarea { min-height: 150px; resize: vertical; }
+        .btn-submit { background: linear-gradient(90deg, var(--accent-purple), var(--accent-neon)); color: #040509; border: none; padding: 15px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-submit:hover { box-shadow: 0 10px 30px var(--accent-glow); transform: translateY(-2px); }
+        
+        .contact-info h3 { margin-bottom: 20px; color: var(--accent-neon); }
+        .contact-info p { color: var(--text-secondary); margin-bottom: 20px; }
+        .social-btn { display: block; text-align: center; margin-bottom: 15px; }
+
+        /* --- FOOTER --- */
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-glass); margin-top: 50px; color: #4b5563; font-size: 0.85rem; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            nav { padding: 15px 20px; flex-direction: column; gap: 10px; border-radius: 20px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .grid-about, .contact-container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">Alexandre B.</div>
         <ul class="nav-links">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="index.html#projets">Projets</a></li>
-            <li><a href="veille.html">Veille Tech</a></li>
-            <li><a href="cv-ambitions.html">CV & Ambitions</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#about">À Propos</a></li>
+            <li><a href="#projets">Projets (E6)</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#veille">Veille</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <header id="accueil" class="hero">
-        <div class="hero-content">
+        <div>
             <h1>Bonjour, je suis <span>Alexandre Barrey</span></h1>
             <h2>Technicien Supérieur en Solutions d'Infrastructure, Systèmes et Réseaux.</h2>
-            <p>Étudiant en BTS SIO option SISR, passionné par l'infrastructure, la sécurité et l'automatisation.</p>
-            
+            <p>Étudiant en BTS SIO option SISR, passionné par l'infrastructure, la sécurité et l'automatisation. Mon objectif est de concevoir, administrer et sécuriser des systèmes et réseaux performants.</p>
             <div style="margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                 <a href="#projets" class="btn">Voir mes réalisations</a>
-                <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="background-color: #333; border: 1px solid #555;">📊 Tableau de Synthèse E6</a>
+                <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="border-color: #fbbc04; color: #fbbc04;">📊 Tableau de Synthèse E6</a>
             </div>
         </div>
     </header>
 
+    <section id="about" class="section">
+        <h2 class="section-title">À Propos de moi</h2>
+        <div class="grid-about">
+            <div class="about-text">
+                <p>Étudiant en BTS SIO (Promotion 2026), j'ai choisi la spécialité SISR par passion pour la construction et la protection des infrastructures informatiques.</p>
+                <p>Mon objectif à court terme est de maîtriser parfaitement l'administration des réseaux (Cisco, Stormshield) et des environnements Microsoft/Linux, avant de me spécialiser en cybersécurité.</p>
+                <p>Je suis une personne rigoureuse, méthodique, et j'adore résoudre des problèmes complexes ("troubleshooting").</p>
+                <br>
+                <a href="mon-cv.pdf" target="_blank" class="btn">📄 Télécharger mon CV (PDF)</a>
+            </div>
+
+            <div class="terminal-window" id="terminal-trigger">
+                <div class="terminal-header">
+                    <div class="term-dot dot-red"></div>
+                    <div class="term-dot dot-yellow"></div>
+                    <div class="term-dot dot-green"></div>
+                    <div class="term-title">admin@alexandre-sys:~</div>
+                </div>
+                <div class="terminal-body" id="terminal-content">
+                    </div>
+            </div>
+        </div>
+    </section>
+
     <section id="projets" class="section">
-        <h2 class="section-title">Mes Projets Techniques</h2>
+        <h2 class="section-title">Mes Projets Techniques (E6)</h2>
         <div class="grid-container">
             
             <div class="card">
                 <h3>Serveur WDS / MDT</h3>
-                <p>Automatisation du déploiement de postes de travail via le réseau.</p>
-                <span class="badge">Windows Server</span>
-                <span class="badge">Déploiement</span>
-                <br>
-                <a href="projet-wds.html" class="btn" style="padding: 5px 15px; font-size: 0.9rem;">Voir les détails</a>
+                <p>Automatisation complète du déploiement de postes de travail via le réseau. Configuration du serveur Windows Deployment Services (WDS) et du Microsoft Deployment Toolkit (MDT).</p>
+                <div>
+                    <span class="badge">Windows Server</span><span class="badge">Déploiement</span><span class="badge">Automatisation</span>
+                </div>
+                <a href="projet-wds.html" class="btn btn-view">Dossier Technique</a>
             </div>
 
             <div class="card">
-                <h3>Firewall Sophos</h3>
-                <p>Sécurisation de l'infrastructure réseau et gestion des règles de filtrage.</p>
-                <span class="badge">Cybersécurité</span>
-                <span class="badge">Réseau</span>
-                <br>
-                <a href="projet-sophos.html" class="btn" style="padding: 5px 15px; font-size: 0.9rem;">Voir les détails</a>
+                <h3>Stratégies de Groupe (GPO)</h3>
+                <p>Création, administration et sécurisation d'un environnement Active Directory via l'utilisation avancée de Group Policy Objects (GPO). Mise en place de restrictions utilisateurs.</p>
+                <div>
+                    <span class="badge">Active Directory</span><span class="badge">Sécurité</span><span class="badge">SysAdmin</span>
+                </div>
+                <a href="projet-gpo.html" class="btn btn-view">Dossier Technique</a>
             </div>
 
             <div class="card">
                 <h3>Gestion de Parc & RMM</h3>
-                <p>Utilisation de GLPI et Atera pour l'inventaire et la supervision à distance.</p>
-                <span class="badge">GLPI</span>
-                <span class="badge">Atera</span>
-                <br>
-                <a href="projet-glpi-atera.html" class="btn" style="padding: 5px 15px; font-size: 0.9rem;">Voir les détails</a>
+                <p>Mise en œuvre de GLPI pour l'inventaire matériel et logiciel, et d'Atera pour la supervision et la prise en main à distance. Centralisation des informations.</p>
+                <div>
+                    <span class="badge">GLPI</span><span class="badge">Atera</span><span class="badge">Supervision</span>
+                </div>
+                <a href="projet-glpi-atera.html" class="btn btn-view">Dossier Technique</a>
             </div>
 
             <div class="card">
-                <h3>Serveur Gestsup</h3>
-                <p>Mise en place d'une solution de ticketing (Helpdesk) pour les utilisateurs.</p>
-                <span class="badge">Ticketing</span>
-                <span class="badge">Support</span>
-                <br>
-                <a href="projet-gestsup.html" class="btn" style="padding: 5px 15px; font-size: 0.9rem;">Voir les détails</a>
-            </div> <div class="card">
-                <h3>Portfolio Professionnel</h3>
-                <p>Conception, développement et hébergement de mon portfolio numérique.</p>
-                <span class="badge">HTML / CSS</span>
-                <span class="badge">GitHub Pages</span>
-                <span class="badge">Git</span>
-                <br>
-                <a href="projet-portfolio.html" class="btn" style="padding: 5px 15px; font-size: 0.9rem;">Voir les détails</a>
+                <h3>Serveur Gestsup (Ticketing)</h3>
+                <p>Mise en place d'une solution de ticketing (Helpdesk). Installation et configuration du serveur Apache, PHP et MariaDB (LAMP) pour le support utilisateur.</p>
+                <div>
+                    <span class="badge">LAMP</span><span class="badge">Ticketing</span><span class="badge">Support N1</span>
+                </div>
+                <a href="projet-gestsup.html" class="btn btn-view">Dossier Technique</a>
+            </div> 
+
+            <div class="card">
+                <h3>Portfolio Numérique</h3>
+                <p>Conception, développement (Single Page Application) et hébergement de mon portfolio avec GitHub Pages. Utilisation du design Glassmorphism et gestion de version Git.</p>
+                <div>
+                    <span class="badge">HTML / CSS</span><span class="badge">GitHub</span><span class="badge">Web Design</span>
+                </div>
+                <a href="#" class="btn btn-view">Vous y êtes !</a>
             </div>
-        </div> </section>
+
+        </div> 
+    </section>
 
     <section id="certifications" class="section">
-        <h2 class="section-title">Mes Certifications IT</h2>
-        
-        <div class="grid-container" style="justify-content: center; display: flex; flex-wrap: wrap; gap: 40px; margin-top: 40px;">
-            
-            <div class="card" style="text-align: center; max-width: 480px; width: 100%; padding: 40px 30px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
-                <div style="margin-bottom: 25px;">
-                    <img src="logo-stormshield.png" 
-                         alt="Logo Stormshield" 
-                         style="height: 80px; width: auto; max-width: 100%; display: block;">
-                </div>
-                <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Stormshield CSNA</h3>
-                <p style="margin-bottom: 25px; color: #cbd5e1; font-size: 1.05rem;">Administration et configuration des pare-feux de nouvelle génération (UTM). Maîtrise du filtrage, du NAT et des VPN.</p>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-                    <span class="badge" style="background-color: rgba(255, 102, 0, 0.15); color: #ff8833; border-color: rgba(255, 102, 0, 0.3); padding: 8px 16px;">Cybersécurité</span>
-                    <span class="badge" style="padding: 8px 16px;">En préparation</span>
-                </div>
+        <h2 class="section-title">Certifications IT</h2>
+        <div class="grid-container">
+            <div class="card" style="align-items: center; text-align: center;">
+                <img src="logo-stormshield.png" alt="Stormshield" style="height: 60px; margin-bottom: 20px;">
+                <h3>Stormshield CSNA</h3>
+                <p>Administration et configuration des pare-feux UTM. Maîtrise du filtrage, du NAT et des VPN.</p>
+                <div><span class="badge" style="color: #ff8833; border-color: rgba(255, 102, 0, 0.3);">Cybersécurité</span><span class="badge">En préparation</span></div>
             </div>
-
-            <div class="card" style="text-align: center; max-width: 480px; width: 100%; padding: 40px 30px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
-                <div style="margin-bottom: 25px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" 
-                         alt="Logo Cisco" 
-                         style="height: 80px; width: auto; max-width: 100%; display: block;">
-                </div>
-                <h3 style="font-size: 1.6rem; margin-bottom: 10px;">Cisco CCNA (200-301)</h3>
-                <p style="margin-bottom: 25px; color: #cbd5e1; font-size: 1.05rem;">Maîtrise des fondamentaux du réseau : routage (OSPF), commutation (VLAN, STP), adressage IP (IPv4/IPv6) et sécurité de base.</p>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-                    <span class="badge" style="background-color: rgba(0, 188, 235, 0.15); color: #00bceb; border-color: rgba(0, 188, 235, 0.3); padding: 8px 16px;">Routage & Switching</span>
-                    <span class="badge" style="padding: 8px 16px;">En préparation</span>
-                </div>
+            <div class="card" style="align-items: center; text-align: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" alt="Cisco" style="height: 60px; margin-bottom: 20px;">
+                <h3>Cisco CCNA (200-301)</h3>
+                <p>Routage, commutation (VLAN), adressage IP (v4/v6) et sécurisation des architectures réseau.</p>
+                <div><span class="badge" style="color: #00bceb; border-color: rgba(0, 188, 235, 0.3);">Réseau</span><span class="badge">En préparation</span></div>
             </div>
-
         </div>
     </section>
 
-    <footer id="contact">
-        <h2>Me contacter</h2>
-        <p>Retrouvez-moi sur les réseaux professionnels :</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/alexandre-barrey-a35454328/" target="_blank" class="btn-social">Mon profil LinkedIn</a>
-            <a href="contact.html" class="btn-social">M'envoyer un email</a>
-        </div>
-        <p class="copyright" style="margin-top: 20px;">© 2026 - Alexandre Barrey - Portfolio BTS SIO</p>
-    </footer>
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
+    <section id="veille" class="section">
+        <h2 class="section-title">Veille Technologique</h2>
+        <div class="grid-container">
+            <div class="card">
+                <span class="badge" style="color: #fbbc04; border-color: #fbbc04;">Thème Principal</span>
+                <h3>L'évolution des ransomwares en 2025</h3>
+                <p>Analyse des nouvelles techniques d'extorsion utilisées par les groupes de hackers et comment les infrastructures réseau doivent s'adapter pour s'en prémunir.</p>
+                <a href="#" class="btn btn-view" style="border-color: #fbbc04; color: #fbbc04;">Lire mon analyse</a>
+            </div>
+            </div>
+    </section>
 
-    document.querySelectorAll('.card').forEach((card) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'all 0.6s ease-out';
-        observer.observe(card);
-    });
-</script>
+    <section id="contact" class="section">
+        <h2 class="section-title">Me Contacter</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Discutons de mon profil !</h3>
+                <p>Je suis à la recherche de nouvelles opportunités pour mettre en pratique mes compétences en infrastructure et réseaux.</p>
+                <p>Que ce soit pour une offre, une question sur mes projets E6 ou simplement pour échanger, n'hésitez pas à utiliser le formulaire ou à me contacter directement sur les réseaux.</p>
+                <br>
+                <a href="https://www.linkedin.com/in/alexandre-barrey-a35454328/" target="_blank" class="btn social-btn">🔗 Mon profil LinkedIn</a>
+            </div>
+            
+            <form class="contact-form">
+                <div>
+                    <label for="name">Nom complet</label>
+                    <input type="text" id="name" placeholder="Votre nom">
+                </div>
+                <div>
+                    <label for="email">Adresse E-mail</label>
+                    <input type="email" id="email" placeholder="votre@email.com">
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Votre message..."></textarea>
+                </div>
+                <button type="button" class="btn-submit">Envoyer le message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 - Alexandre Barrey - Portfolio BTS SIO SISR - Développé avec passion.</p>
+    </footer>
+
+    <script>
+        // 1. Animation d'apparition des cartes au scroll (Scroll Reveal)
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card, .contact-container').forEach((el) => {
+            revealObserver.observe(el);
+        });
+
+        // 2. Animation du Terminal déclenchée uniquement quand on le voit
+        const commands = [
+            { cmd: "whoami", output: "Alexandre Barrey" },
+            { cmd: "cat profil.txt", output: "Admin Sys/Reseau Junior.<br>Curieux, rigoureux et passionné." },
+            { cmd: "ping -c 3 entreprise.fr", output: "64 bytes from recruteur: icmp_seq=1 time=0.04 ms<br>64 bytes from recruteur: icmp_seq=2 time=0.03 ms<br><span class='highlight-output'>--- Match professionnel détecté ✓ ---</span>" },
+            { cmd: "./check_status.sh", output: "[OK] Compétences Réseau validées<br>[OK] Motivation à 100%<br>[OK] Prêt pour le déploiement" }
+        ];
+
+        const termContent = document.getElementById("terminal-content");
+        let terminalStarted = false;
+        let cmdIndex = 0;
+
+        function typeCommand() {
+            if (cmdIndex >= commands.length) {
+                termContent.innerHTML += `<div><span class="prompt">admin@alexandre-sys:~$ </span><span class="cursor"></span></div>`;
+                return;
+            }
+
+            const current = commands[cmdIndex];
+            const lineDiv = document.createElement("div");
+            lineDiv.innerHTML = `<span class="prompt">admin@alexandre-sys:~$ </span><span class="cmd"></span><span class="cursor"></span>`;
+            termContent.appendChild(lineDiv);
+
+            const cmdSpan = lineDiv.querySelector(".cmd");
+            const cursorSpan = lineDiv.querySelector(".cursor");
+            let charIndex = 0;
+
+            const typeInterval = setInterval(() => {
+                cmdSpan.textContent += current.cmd.charAt(charIndex);
+                charIndex++;
+
+                if (charIndex >= current.cmd.length) {
+                    clearInterval(typeInterval);
+                    cursorSpan.remove();
+                    
+                    setTimeout(() => {
+                        const outputDiv = document.createElement("div");
+                        outputDiv.className = "output";
+                        outputDiv.innerHTML = current.output;
+                        termContent.appendChild(outputDiv);
+                        
+                        cmdIndex++;
+                        setTimeout(typeCommand, 600);
+                    }, 400);
+                }
+            }, 50);
+        }
+
+        // L'observer qui vérifie si le terminal est à l'écran
+        const terminalObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !terminalStarted) {
+                terminalStarted = true;
+                setTimeout(typeCommand, 500); // Lance l'animation 0.5s après l'apparition
+            }
+        }, { threshold: 0.5 }); // Se déclenche quand la moitié du terminal est visible
+
+        terminalObserver.observe(document.getElementById('terminal-trigger'));
+    </script>
 </body>
 </html>
-
-
-
-
