@@ -31,7 +31,7 @@
             background-size: 50px 50px;
             color: var(--text-primary);
             line-height: 1.6;
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* Permet un défilement fluide quand on clique sur le menu */
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -56,18 +56,18 @@
             font-weight: 700; 
             letter-spacing: 0px; 
             text-transform: lowercase; 
-            text-decoration: none;
+            text-decoration: none; 
         }
         .logo .user { color: #39ff14; text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
         .logo .at { color: var(--text-primary); }
         .logo .host { color: var(--accent-neon); text-shadow: 0 0 10px var(--accent-glow); }
         .logo .cursor-blink { color: var(--accent-neon); animation: blink 1s step-end infinite; }
 
-        .nav-links { list-style: none; display: flex; gap: 25px; }
+        .nav-links { list-style: none; display: flex; gap: 30px; }
         .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
         .nav-links a:hover { color: var(--text-primary); text-shadow: 0 0 5px var(--accent-neon); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION & FLECHE --- */
         .hero { height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; padding: 0 20px; position: relative; }
         .hero::before { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); border-radius: 50%; filter: blur(60px); opacity: 0.4; z-index: -1; }
         .hero h1 { font-size: 4rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; line-height: 1.1; }
@@ -77,6 +77,11 @@
         
         .btn { display: inline-block; padding: 12px 30px; background: transparent; color: var(--accent-neon); text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-neon); transition: var(--transition-smooth); cursor: pointer; }
         .btn:hover { color: #040509; background-color: var(--accent-neon); box-shadow: 0 0 30px var(--accent-glow); transform: translateY(-2px); }
+
+        /* Flèche rebondissante Accueil -> A Propos */
+        .scroll-down { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); font-size: 2rem; color: var(--accent-neon); text-decoration: none; animation: bounce 2s infinite; transition: 0.3s; opacity: 0.8; }
+        .scroll-down:hover { opacity: 1; text-shadow: 0 0 15px var(--accent-glow); }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-15px) translateX(-50%); } 60% { transform: translateY(-7px) translateX(-50%); } }
 
         /* --- SECTIONS GLOBALES --- */
         .section { padding: 100px 20px 40px 20px; max-width: 1200px; margin: auto; min-height: 80vh; }
@@ -98,9 +103,8 @@
         .output { color: #cbd5e1; margin-bottom: 15px; padding-left: 10px; border-left: 2px solid #334155; margin-top: 5px; }
         .highlight-output { color: #fbbc04; font-weight: bold; }
         .cursor { display: inline-block; width: 8px; height: 18px; background-color: #39ff14; vertical-align: middle; animation: blink 1s step-end infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* --- COMPETENCES (BARRES DE PROGRESSION) --- */
+        /* --- COMPETENCES --- */
         .skill-item { margin-bottom: 20px; }
         .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; color: var(--text-primary); font-weight: 500; }
         .skill-bar-bg { width: 100%; height: 8px; background: rgba(0, 0, 0, 0.4); border-radius: 10px; border: 1px solid var(--border-glass); overflow: hidden; }
@@ -133,6 +137,19 @@
         .contact-info h3 { margin-bottom: 20px; color: var(--accent-neon); }
         .contact-info p { color: var(--text-secondary); margin-bottom: 20px; }
         .social-btn { display: block; text-align: center; margin-bottom: 15px; }
+
+        /* --- BOUTON RETOUR EN HAUT --- */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+            background-color: rgba(4, 5, 9, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid var(--accent-neon); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            color: var(--accent-neon); font-size: 1.5rem; text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: var(--transition-smooth);
+            opacity: 0; visibility: hidden; z-index: 999;
+        }
+        #backToTop.show { opacity: 1; visibility: visible; }
+        #backToTop:hover { background-color: var(--accent-neon); color: #000; box-shadow: 0 0 20px var(--accent-glow); transform: translateY(-5px); }
 
         /* --- FOOTER --- */
         footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-glass); margin-top: 50px; color: #4b5563; font-size: 0.85rem; }
@@ -172,6 +189,7 @@
                 <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="border-color: #fbbc04; color: #fbbc04;">📊 Tableau de Synthèse E5</a>
             </div>
         </div>
+        <a href="#about" class="scroll-down" title="Découvrir mon profil">↓</a>
     </header>
 
     <section id="about" class="section">
@@ -450,6 +468,8 @@
         </div>
     </section>
 
+    <a href="#accueil" id="backToTop" title="Retour en haut">↑</a>
+
     <footer>
         <p>© 2026 - Alexandre Barrey - Portfolio BTS SIO SISR - Développé avec passion.</p>
     </footer>
@@ -567,6 +587,18 @@
         }
         
         form.addEventListener("submit", handleSubmit);
+
+        // 4. Gestion du bouton "Retour en haut"
+        const backToTopBtn = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            // Afficher le bouton après 400px de scroll
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
     </script>
 </body>
 </html>
