@@ -87,7 +87,9 @@
         }
 
         .media-container img {
-            max-width: 100%; height: auto; display: block;
+            max-width: 60%; /* RÉDUIT LA TAILLE ICI (60% du conteneur) */
+            height: auto; display: block;
+            margin: 0 auto; /* CENTRE L'IMAGE HORIZONTALEMENT */
             border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             border: 1px solid var(--border-glass); transition: transform 0.3s;
         }
@@ -116,6 +118,7 @@
             .section-title { font-size: 2rem; }
             .card { padding: 25px; border-radius: 16px; }
             .card h2 { font-size: 1.5rem; }
+            .media-container img { max-width: 90%; } /* Un peu plus large sur mobile */
         }
     </style>
 </head>
