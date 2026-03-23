@@ -31,7 +31,7 @@
             background-size: 50px 50px;
             color: var(--text-primary);
             line-height: 1.6;
-            scroll-behavior: smooth; /* Permet un défilement fluide quand on clique sur le menu */
+            scroll-behavior: smooth;
         }
 
         ::-webkit-scrollbar { width: 8px; }
@@ -78,7 +78,6 @@
         .btn { display: inline-block; padding: 12px 30px; background: transparent; color: var(--accent-neon); text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; border: 1px solid var(--accent-neon); transition: var(--transition-smooth); cursor: pointer; }
         .btn:hover { color: #040509; background-color: var(--accent-neon); box-shadow: 0 0 30px var(--accent-glow); transform: translateY(-2px); }
 
-        /* Flèche rebondissante Accueil -> A Propos */
         .scroll-down { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); font-size: 2rem; color: var(--accent-neon); text-decoration: none; animation: bounce 2s infinite; transition: 0.3s; opacity: 0.8; }
         .scroll-down:hover { opacity: 1; text-shadow: 0 0 15px var(--accent-glow); }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-15px) translateX(-50%); } 60% { transform: translateY(-7px) translateX(-50%); } }
@@ -103,6 +102,7 @@
         .output { color: #cbd5e1; margin-bottom: 15px; padding-left: 10px; border-left: 2px solid #334155; margin-top: 5px; }
         .highlight-output { color: #fbbc04; font-weight: bold; }
         .cursor { display: inline-block; width: 8px; height: 18px; background-color: #39ff14; vertical-align: middle; animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         /* --- COMPETENCES --- */
         .skill-item { margin-bottom: 20px; }
@@ -122,6 +122,13 @@
         .badge { display: inline-block; background-color: rgba(255, 255, 255, 0.03); color: var(--text-secondary); padding: 6px 14px; border-radius: 40px; font-size: 0.75rem; font-weight: 500; margin: 0 6px 8px 0; border: 1px solid var(--border-glass); }
         .card:hover .badge { border-color: rgba(0, 242, 254, 0.2); color: var(--text-primary); }
         .btn-view { margin-top: auto; align-self: flex-start; padding: 8px 20px; font-size: 0.8rem; }
+
+        /* --- DIAPOSITIVES VEILLE (PLAN) --- */
+        .slide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+        .slide-item { background: rgba(0,0,0,0.2); border: 1px solid var(--border-glass); border-left: 3px solid var(--accent-neon); padding: 15px; border-radius: 8px; }
+        .slide-item h4 { color: var(--text-primary); font-size: 1rem; margin-bottom: 10px; }
+        .slide-item ul { margin-left: 15px; color: var(--text-secondary); font-size: 0.85rem; }
+        .slide-item .key-point { margin-top: 10px; color: var(--accent-neon); font-size: 0.85rem; font-weight: bold; }
 
         /* --- CONTACT FORM --- */
         .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--bg-panel); padding: 40px; border-radius: 20px; border: 1px solid var(--border-glass); }
@@ -186,7 +193,7 @@
             <p>Étudiant en BTS SIO option SISR, passionné par l'infrastructure, la sécurité et l'automatisation. Mon objectif est de concevoir, administrer et sécuriser des systèmes et réseaux performants.</p>
             <div style="margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                 <a href="#projets" class="btn">Voir mes réalisations</a>
-                <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="border-color: #fbbc04; color: #fbbc04;">📊 Tableau de Synthèse E5</a>
+                <a href="https://docs.google.com/spreadsheets/d/1T4hxC_go26bJ9x8VVzdnUFsI1xL2lahg/edit?usp=sharing" target="_blank" class="btn" style="border-color: #fbbc04; color: #fbbc04;">📊 Tableau de Synthèse E6</a>
             </div>
         </div>
         <a href="#about" class="scroll-down" title="Découvrir mon profil">↓</a>
@@ -256,6 +263,7 @@
 
             <div class="card">
                 <h3>🛡️ Sécurité & Outils Support</h3>
+                
                 <div class="skill-item">
                     <div class="skill-info"><span>Ticketing & Inventaire (GLPI)</span><span>95%</span></div>
                     <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
@@ -354,7 +362,7 @@
                     <span class="badge" style="color: #39ff14; border-color: rgba(57, 255, 20, 0.3);">Performance</span>
                 </div>
                 <p><strong>L'actualité :</strong> Microsoft abandonne l'ancienne pile SCSI au profit du pilote natif NVMeDisk.sys.</p>
-                <p><strong>Impact SISR :</strong> Cette refonte totale de la pile de stockage permet des gains massifs en production : jusqu'à 80% d'IOPS en plus et une baisse de 12% de la charge CPU sur les serveurs.</p>
+                <p><strong>Impact SISR :</strong> Cette refonte totale permet des gains massifs en production : jusqu'à 80% d'IOPS en plus et une baisse de 12% de la charge CPU sur les serveurs.</p>
                 
                 <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
@@ -366,12 +374,29 @@
             </div>
 
             <div class="card">
+                <h3>🔄 Windows 2025 : Hotpatching On-Premises</h3>
+                <div style="margin-bottom: 15px;">
+                    <span class="badge" style="color: #00f2fe; border-color: rgba(0, 242, 254, 0.3);">Windows Server</span>
+                    <span class="badge" style="color: #ff8833; border-color: rgba(255, 102, 0, 0.3);">Haute Disponibilité</span>
+                </div>
+                <p><strong>L'actualité :</strong> Microsoft étend la capacité de Hotpatching aux serveurs physiques locaux (hors cloud) via Azure Arc.</p>
+                <p><strong>Impact SISR :</strong> Application de correctifs critiques sans redémarrage. La "fenêtre de maintenance" nocturne devient obsolète, l'automatisation se déplace vers l'audit de conformité continu.</p>
+                
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
+                    <ul style="list-style-type: none; font-size: 0.85rem; line-height: 1.8;">
+                        <li>🔗 <a href="https://techcommunity.microsoft.com/t5/windows-server-insiders/windows-server-2025-hotpatching/m-p/4000000" target="_blank" style="color: var(--accent-neon); text-decoration: none;">Microsoft : Hotpatching Announcement</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
                 <h3>🛡️ Transition Secure Boot & Patching</h3>
                 <div style="margin-bottom: 15px;">
                     <span class="badge" style="color: #ff8833; border-color: rgba(255, 102, 0, 0.3);">Cybersécurité</span>
                     <span class="badge" style="color: #4facfe; border-color: rgba(79, 172, 254, 0.3);">Infrastructure</span>
                 </div>
-                <p><strong>L'actualité :</strong> Expiration critique des certificats Secure Boot de 2011 prévue pour juin et octobre 2026, nécessitant une migration vers les CA 2023.</p>
+                <p><strong>L'actualité :</strong> Expiration critique des certificats Secure Boot de 2011 prévue pour fin 2026, nécessitant une migration vers les CA 2023.</p>
                 <p><strong>Impact SISR :</strong> Les administrateurs doivent anticiper cette transition et patcher les failles critiques pour éviter que les serveurs et postes clients ne refusent de démarrer (Écran noir).</p>
                 
                 <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
@@ -383,13 +408,13 @@
             </div>
 
             <div class="card">
-                <h3>🐧 L'arrivée du Linux Kernel 7.0</h3>
+                <h3>🐧 Le Linux Kernel 7.0 (Phase Finale RC7)</h3>
                 <div style="margin-bottom: 15px;">
                     <span class="badge" style="color: #fbbc04; border-color: rgba(251, 188, 4, 0.3);">Système Libre</span>
                     <span class="badge" style="color: #39ff14; border-color: rgba(57, 255, 20, 0.3);">Optimisation</span>
                 </div>
-                <p><strong>L'actualité :</strong> Linus Torvalds annonce le passage à la branche 7.x, intégrant notamment NTSYNC et l'optimisation mémoire "slub sheaves".</p>
-                <p><strong>Impact SISR :</strong> Ces avancées préparent les systèmes Linux à mieux gérer les charges de travail modernes et facilitent l'intégration d'outils d'IA agentique au niveau de l'OS.</p>
+                <p><strong>L'actualité :</strong> Linus Torvalds a publié la RC7 du noyau 7.0. Cette version stabilise enfin le pilote NTSYNC, permettant une synchronisation native des API Windows sous Linux.</p>
+                <p><strong>Impact SISR :</strong> Fin des pertes de performances pour les apps Windows virtualisées. On peut envisager des migrations massives de serveurs legacy vers des hyperviseurs Linux sans sacrifier la réactivité.</p>
                 
                 <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
@@ -400,13 +425,13 @@
             </div>
 
             <div class="card">
-                <h3>🤖 AIOps et IA Agentique via MCP</h3>
+                <h3>🤖 AIOps et MCP 1.0 (Standardisation)</h3>
                 <div style="margin-bottom: 15px;">
                     <span class="badge" style="color: #00f2fe; border-color: rgba(0, 242, 254, 0.3);">Automatisation</span>
                     <span class="badge" style="color: #4facfe; border-color: rgba(79, 172, 254, 0.3);">Supervision</span>
                 </div>
-                <p><strong>L'actualité :</strong> L'émergence des systèmes multi-agents capables de prendre des décisions autonomes dans la gestion IT, propulsée par le standard MCP.</p>
-                <p><strong>Impact SISR :</strong> L'AIOps transforme le support. Les agents IA peuvent désormais se connecter en temps réel aux outils d'infrastructure pour diagnostiquer et résoudre les incidents réseau.</p>
+                <p><strong>L'actualité :</strong> Les principaux éditeurs (Google, Microsoft, Red Hat) ont ratifié le standard MCP 1.0 (Model Context Protocol).</p>
+                <p><strong>Impact SISR :</strong> Ce protocole permet aux agents IA de "discuter" directement et de façon sécurisée avec nos outils système (SSH, API de monitoring). On passe de l'IA qui "écrit des scripts" à l'IA qui "résout des incidents" en autonomie.</p>
                 
                 <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
@@ -416,6 +441,25 @@
                     </ul>
                 </div>
             </div>
+
+            <div class="card">
+                <h3>🔐 ZTNA : La fin annoncée des VPN</h3>
+                <div style="margin-bottom: 15px;">
+                    <span class="badge" style="color: #ff8833; border-color: rgba(255, 102, 0, 0.3);">Cybersécurité</span>
+                    <span class="badge" style="color: #4facfe; border-color: rgba(79, 172, 254, 0.3);">Infrastructure</span>
+                </div>
+                <p><strong>L'actualité :</strong> L'adoption du Zero Trust Network Access (ZTNA) devient la norme en 2026 pour supplanter les architectures VPN traditionnelles jugées trop permissives.</p>
+                <p><strong>Impact SISR :</strong> Contrairement au VPN qui ouvre l'accès à tout le réseau, le ZTNA n'autorise l'accès qu'à une application spécifique après vérification continue de l'identité et de l'état de santé du poste. Cela réduit drastiquement les mouvements latéraux en cas d'attaque.</p>
+                
+                <div style="margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border-glass);">
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px;">Sources officielles :</p>
+                    <ul style="list-style-type: none; font-size: 0.85rem; line-height: 1.8;">
+                        <li>🔗 <a href="https://messervices.cyber.gouv.fr/guides/zero-trust" target="_blank" style="color: var(--accent-neon); text-decoration: none;">ANSSI : Le modèle Zero Trust</a></li>
+                    </ul>
+                </div>
+            </div>
+
+           
 
         </div>
     </section>
@@ -587,7 +631,6 @@
         const backToTopBtn = document.getElementById("backToTop");
         
         window.addEventListener("scroll", () => {
-            // Afficher le bouton après 400px de scroll
             if (window.scrollY > 400) {
                 backToTopBtn.classList.add("show");
             } else {
