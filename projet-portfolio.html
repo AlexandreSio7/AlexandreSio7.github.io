@@ -3,59 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet Portfolio - Alexandre Barrey</title>
+    <title>Support & Gestion de Parc - Alexandre Barrey</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles spécifiques pour le Gantt et les icônes si pas dans style.css */
+        .gantt-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.85rem; }
+        .gantt-table th, .gantt-table td { border: 1px solid rgba(255,255,255,0.1); padding: 8px; text-align: center; }
+        .fill { background: #00a8ff; border-radius: 4px; }
+    </style>
 </head>
 <body>
 
     <div style="padding: 20px; max-width: 1200px; margin: 0 auto;">
-        <a href="index.html#projets" class="btn" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none;">
+        <a href="index.html#projets" class="btn" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: #00a8ff;">
             <span>←</span> Retour aux projets
         </a>
     </div>
 
-    <section class="section" style="margin-top: 20px;">
-        <h1 class="section-title">Création du Portfolio Professionnel</h1>
+    <section class="section" style="margin-top: 20px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 20px;">
+        <h1 class="section-title">Gestion de Parc & Assistance Client</h1>
         
         <div class="card" style="margin-bottom: 30px;">
-            <h3>📋 Contexte du projet</h3>
-            <p>Développement d'un support numérique pour présenter mes compétences et mes réalisations lors de l'épreuve E4 et E6 du BTS SIO. L'objectif était de créer une interface moderne, réactive (responsive) et hébergée de manière professionnelle.</p>
+            <h3>📋 Contexte et Objectifs</h3>
+            <p>Mise en place d'une solution complète de gestion des services informatiques (ITSM) et d'outils de support pour répondre aux besoins d'une infrastructure d'entreprise. L'objectif était de centraliser l'inventaire et d'offrir une interface d'assistance (Helpdesk) efficace pour les utilisateurs.</p>
         </div>
 
-        <div class="grid-container">
+        <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
             <div class="card">
-                <h3>🛠️ Réalisation Technique</h3>
-                <ul style="line-height: 1.8;">
-                    <li>Développement en <strong>HTML5 / CSS3</strong> (Flexbox & Grid).</li>
-                    <li>Utilisation de <strong>Git</strong> pour le versionnage du code.</li>
-                    <li>Déploiement via <strong>GitHub Pages</strong> pour un hébergement gratuit et sécurisé (HTTPS).</li>
-                    <li>Intégration d'un formulaire de contact via <strong>Formspree (API)</strong>.</li>
+                <h3>🖥️ Gestion de Parc & RMM</h3>
+                <p style="margin-bottom: 15px; color: #94a3b8;">Centralisation et supervision :</p>
+                <ul style="line-height: 1.8; margin-left: 20px;">
+                    <li><strong>GLPI :</strong> Inventaire automatique du parc matériel et logiciel via agents.</li>
+                    <li><strong>Atera :</strong> Supervision en temps réel (CPU, RAM, Disque) et alertes automatiques.</li>
+                    <li><strong>Prise en main :</strong> Configuration d'outils de télémaintenance sécurisés.</li>
                 </ul>
             </div>
 
             <div class="card">
-                <h3>✅ Compétences Validées</h3>
+                <h3>🎧 Assistance Client (Helpdesk)</h3>
+                <p style="margin-bottom: 15px; color: #94a3b8;">Gestion des incidents et demandes :</p>
+                <ul style="line-height: 1.8; margin-left: 20px;">
+                    <li><strong>Ticketing :</strong> Cycle de vie d'un ticket (Ouverture > Attribution > Résolution).</li>
+                    <li><strong>Base de connaissances :</strong> Rédaction de procédures pour les utilisateurs (Self-help).</li>
+                    <li><strong>SLA :</strong> Respect des délais d'intervention selon la priorité de l'incident.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>✅ Compétences BTS SISR</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
-                    <span class="badge">B1.1 - Patrimoine informatique</span>
-                    <span class="badge">B1.3 - Mode Projet</span>
-                    <span class="badge">Web</span>
+                    <span class="badge">B1.2 - Support Utilisateur</span>
+                    <span class="badge">B1.1 - Patrimoine IT</span>
+                    <span class="badge">ITIL</span>
                 </div>
-                <p style="font-size: 0.95rem; color: #cbd5e1;">
-                    <strong>Mode Projet :</strong> Organisation des tâches (Design > Développement > Tests > Mise en ligne). Gestion de la documentation technique et maintenance du dépôt GitHub.
+                <p style="font-size: 0.9rem; color: #cbd5e1;">
+                    Maîtrise de la relation client, diagnostic à distance, gestion des habilitations et maintien en condition opérationnelle du parc informatique.
                 </p>
             </div>
         </div>
 
-        <div style="margin-top: 40px; text-align: center;">
-             <div class="card" style="border: 1px dashed #00a8ff; padding: 40px;">
-                <p>🚀 <strong>Hébergement :</strong> Ce site est actuellement en ligne sur les serveurs de GitHub.</p>
-                <p style="font-size: 0.9rem; margin-top: 10px; color: #94a3b8;">Dépôt source : <a href="https://github.com/AlexandreSio7/AlexandreSio7.github.io" style="color: #00a8ff;">GitHub Repository</a></p>
-             </div>
+        <div class="card" style="margin-top: 30px;">
+            <h3>📅 Planning de Réalisation (6 semaines)</h3>
+            <div style="overflow-x: auto;">
+                <table class="gantt-table">
+                    <thead>
+                        <tr>
+                            <th>Phase de Travail (Lundi 14h-18h)</th>
+                            <th>S1</th>
+                            <th>S2</th>
+                            <th>S3</th>
+                            <th>S4</th>
+                            <th>S5</th>
+                            <th>S6</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: left;">Audit du parc existant et besoins support</td>
+                            <td class="fill"></td><td></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Installation GLPI et configuration base</td>
+                            <td></td><td class="fill"></td><td></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Déploiement agents d'inventaire</td>
+                            <td></td><td></td><td class="fill"></td><td></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Config du Helpdesk (Catégories/Tickets)</td>
+                            <td></td><td></td><td></td><td class="fill"></td><td></td><td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Tests d'assistance et prise en main distance</td>
+                            <td></td><td></td><td></td><td></td><td class="fill"></td><td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Rédaction procédures et documentation finale</td>
+                            <td></td><td></td><td></td><td></td><td></td><td class="fill"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+        <div class="grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+            <div class="card" style="text-align: center; border: 1px solid #ff4757;">
+                <h4>🛡️ Sécurité liée</h4>
+                <p style="font-size: 0.85rem; margin: 10px 0;">Voir comment Sophos protège ces outils.</p>
+                <a href="projet-sophos.html" style="color: #ff4757; text-decoration: none; font-weight: bold;">Dossier Sophos →</a>
+            </div>
+            <div class="card" style="text-align: center; border: 1px solid #00a8ff;">
+                <h4>📂 Documentation technique</h4>
+                <p style="font-size: 0.85rem; margin: 10px 0;">Guide d'utilisation du support client.</p>
+                <a href="#" style="color: #00a8ff; text-decoration: none; font-weight: bold;">Télécharger PDF (Bientôt)</a>
+            </div>
+        </div>
+
     </section>
 
-    <footer>
-        <p>© 2026 - Alexandre Barrey</p>
+    <footer style="text-align: center; padding: 40px; color: #64748b;">
+        <p>© 2026 - Alexandre Barrey - Portfolio BTS SIO SISR</p>
     </footer>
 
 </body>
