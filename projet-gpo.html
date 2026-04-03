@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet GPO - Alexandre Barrey</title>
+    <style>
+        /* Styles repris de ton thème Glassmorphism */
+        :root {
+            --bg-dark: #040509;
+            --bg-panel: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-neon: #00f2fe;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+
+        body { background-color: var(--bg-dark); color: var(--text-primary); line-height: 1.6; padding-bottom: 50px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; background: rgba(0, 242, 254, 0.1); color: var(--accent-neon); text-decoration: none; border-radius: 8px; border: 1px solid var(--accent-neon); transition: var(--transition-smooth); font-weight: 600; }
+        .btn:hover { background: var(--accent-neon); color: #000; box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); }
+
+        .section-title { font-size: 2.2rem; margin: 40px 0 20px 0; border-left: 4px solid var(--accent-neon); padding-left: 15px; }
+
+        .card { background: var(--bg-panel); border: 1px solid var(--border-glass); border-radius: 12px; padding: 30px; margin-bottom: 25px; backdrop-filter: blur(10px); }
+        .card h3 { color: var(--accent-neon); margin-bottom: 15px; font-size: 1.3rem; }
+        .card p, .card li { color: var(--text-secondary); margin-bottom: 10px; }
+        .card ul { margin-left: 20px; }
+
+        .badge { display: inline-block; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-glass); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; margin-right: 10px; margin-bottom: 10px; color: var(--text-primary); }
+
+        /* Grille pour les images */
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .img-container { background: rgba(0,0,0,0.3); border: 1px solid var(--border-glass); border-radius: 8px; overflow: hidden; text-align: center; }
+        .img-container img { width: 100%; height: auto; display: block; transition: var(--transition-smooth); cursor: zoom-in; }
+        .img-container img:hover { transform: scale(1.02); }
+        .img-caption { padding: 15px; font-size: 0.9rem; color: var(--text-primary); background: rgba(0, 242, 254, 0.05); border-top: 1px solid var(--border-glass); }
+
+        footer { text-align: center; margin-top: 50px; color: var(--text-secondary); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div style="margin-top: 20px;">
+            <a href="index.html#projets" class="btn">
+                <span>←</span> Retour au Portfolio
+            </a>
+        </div>
+
+        <h1 class="section-title">Création et Gestion de GPO (Active Directory)</h1>
+
+        <div class="card">
+            <h3>📋 Contexte du projet</h3>
+            <p>Dans le cadre de l'administration du domaine Windows Server, j'ai été chargé de sécuriser et de standardiser l'environnement de travail des utilisateurs. L'objectif était de limiter les erreurs de manipulation et de renforcer la sécurité des postes clients (Endpoints) en restreignant l'accès aux paramètres critiques du système.</p>
+        </div>
+
+        <div class="card">
+            <h3>🛠️ Configurations Techniques Réalisées</h3>
+            <ul>
+                <li><strong>GPO_User_DesktopLimit :</strong> Masquage des lecteurs locaux (ex: Disque C:) dans l'explorateur de fichiers pour empêcher les utilisateurs de naviguer ou de modifier les fichiers systèmes.</li>
+                <li><strong>GPO_User_SystemLock :</strong> Interdiction stricte de l'accès au Panneau de configuration et à l'application "Paramètres", verrouillant ainsi la configuration réseau et système du poste.</li>
+                <li><strong>Sécurité Système :</strong> Désactivation de l'accès à l'invite de commandes (cmd.exe) pour empêcher l'exécution de scripts non autorisés par les utilisateurs standards.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>✅ Compétences BTS SISR Validées</h3>
+            <div>
+                <span class="badge">B1.1 - Gérer le patrimoine informatique</span>
+                <span class="badge">B1.2 - Répondre aux incidents (Prévention)</span>
+                <span class="badge">Cybersécurité - Sécuriser les équipements</span>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="font-size: 1.8rem;">📸 Preuves d'exécution (Éditeur de gestion des stratégies)</h2>
+        
+        <div class="image-grid">
+            
+            <div class="img-container">
+                <img src="1000008208.jpg" alt="GPO Masquage des lecteurs">
+                <div class="img-caption">
+                    <strong>Explorateur de fichiers</strong><br>
+                    Activation du paramètre "Masquer ces lecteurs spécifiés" pour sécuriser le stockage local.
+                </div>
+            </div>
+
+            <div class="img-container">
+                <img src="1000008210.jpg" alt="GPO Verrouillage panneau de configuration">
+                <div class="img-caption">
+                    <strong>GPO_User_SystemLock</strong><br>
+                    Interdiction de l'accès au panneau de configuration pour les utilisateurs standards.
+                </div>
+            </div>
+
+            <div class="img-container">
+                <img src="1000008209.jpg" alt="GPO Désactivation CMD">
+                <div class="img-caption">
+                    <strong>Sécurité Système</strong><br>
+                    Désactivation de l'accès à l'invite de commandes (cmd) pour contrer l'exécution de scripts.
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>© 2026 - Alexandre Barrey - Dossier Technique GPO</p>
+        </footer>
+    </div>
+
+</body>
+</html>
