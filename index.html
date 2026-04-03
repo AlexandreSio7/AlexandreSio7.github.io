@@ -136,8 +136,8 @@
         .skill-bar-bg { width: 100%; height: 8px; background: rgba(0, 0, 0, 0.4); border-radius: 10px; border: 1px solid var(--border-glass); overflow: hidden; }
         .skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent-purple), var(--accent-neon)); border-radius: 10px; box-shadow: 0 0 10px var(--accent-glow); }
 
-        /* --- PROJETS ET CARTES --- */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        /* --- PROJETS ET CARTES (FLEX & GRID ALIGNEMENT CORRIGÉ) --- */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; align-items: stretch; }
         .card { background: var(--bg-panel); backdrop-filter: blur(10px); padding: 30px; border-radius: 16px; border: 1px solid var(--border-glass); transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; opacity: 0; transform: translateY(30px); }
         .card::after { content: ''; position: absolute; width: 100px; height: 100px; background: var(--accent-glow); border-radius: 50%; filter: blur(30px); opacity: 0; transition: var(--transition-smooth); top: -50px; right: -50px; z-index: -1; }
         .card:hover { transform: translateY(-8px); border-color: rgba(0, 242, 254, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); }
@@ -313,20 +313,26 @@
             <div class="card">
                 <h3>Serveur WDS / MDT</h3>
                 <p>Automatisation complète du déploiement de postes de travail via le réseau. Configuration du serveur Windows Deployment Services (WDS) et du Microsoft Deployment Toolkit (MDT).</p>
-                <div>
+                <div style="margin-bottom: 20px;">
                     <span class="badge">Windows Server</span><span class="badge">Déploiement</span><span class="badge">Automatisation</span>
                 </div>
                 <a href="projet-wds.html" class="btn btn-view">Dossier Technique</a>
             </div>
 
-         <div class="card">
-    <h3>Support Utilisateur & Maintenance</h3>
-    <p>Missions en entreprise : Préparation et déploiement de postes (Mastering), installation de la solution de sécurité Sophos Endpoint et assistance aux utilisateurs via l'outil de ticketing GLPI.</p>
-    <div>
-        <span class="badge">Assistance N1</span>
-        <span class="badge">Mastering</span>
-        <span class="badge">GLPI</span>
-    </div>
+            <div class="card">
+                <h3>Support Utilisateur & Maintenance</h3>
+                <p>Missions en entreprise : Préparation et déploiement de postes (Mastering), installation de la solution de sécurité Sophos Endpoint et assistance aux utilisateurs via l'outil de ticketing GLPI.</p>
+                <div style="margin-bottom: 20px;">
+                    <span class="badge">Assistance N1</span><span class="badge">Mastering</span><span class="badge">GLPI</span>
+                </div>
+                <a href="projet-support.html" class="btn btn-view">Dossier Technique</a>
+            </div>
+
+            <div class="card">
+                <h3>Pare-feu Sophos XG</h3>
+                <p>Déploiement et configuration d'un boîtier UTM pour sécuriser l'infrastructure. Mise en place de règles de filtrage strictes, gestion du routage/NAT, et configuration de VPN.</p>
+                <div style="margin-bottom: 20px;">
+                    <span class="badge">Cybersécurité</span><span class="badge">Routage / NAT</span><span class="badge">VPN</span>
                 </div>
                 <a href="projet-sophos.html" class="btn btn-view">Dossier Technique</a>
             </div>
@@ -334,7 +340,7 @@
             <div class="card">
                 <h3>Gestion de Parc & RMM</h3>
                 <p>Mise en œuvre de GLPI pour l'inventaire matériel et logiciel, et d'Atera pour la supervision et la prise en main à distance. Centralisation des informations.</p>
-                <div>
+                <div style="margin-bottom: 20px;">
                     <span class="badge">GLPI</span><span class="badge">Atera</span><span class="badge">Supervision</span>
                 </div>
                 <a href="projet-glpi-atera.html" class="btn btn-view">Dossier Technique</a>
@@ -343,7 +349,7 @@
             <div class="card">
                 <h3>Serveur Gestsup (Ticketing)</h3>
                 <p>Mise en place d'une solution de ticketing (Helpdesk). Installation et configuration du serveur Apache, PHP et MariaDB (LAMP) pour le support utilisateur.</p>
-                <div>
+                <div style="margin-bottom: 20px;">
                     <span class="badge">LAMP</span><span class="badge">Ticketing</span><span class="badge">Support N1</span>
                 </div>
                 <a href="projet-gestsup.html" class="btn btn-view">Dossier Technique</a>
@@ -352,7 +358,7 @@
             <div class="card">
                 <h3>Portfolio Numérique</h3>
                 <p>Conception, développement (Single Page Application) et hébergement de mon portfolio avec GitHub Pages. Utilisation du design Glassmorphism et gestion de version Git.</p>
-                <div>
+                <div style="margin-bottom: 20px;">
                     <span class="badge">HTML / CSS</span><span class="badge">GitHub</span><span class="badge">Web Design</span>
                 </div>
                 <a href="#" class="btn btn-view">Vous y êtes !</a>
@@ -490,9 +496,6 @@
                     </ul>
                 </div>
             </div>
-
-
-
         </div>
     </section>
 
@@ -594,7 +597,6 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
-
 
         // 1. Animation d'apparition des cartes au scroll (Scroll Reveal)
         const revealObserver = new IntersectionObserver((entries) => {
