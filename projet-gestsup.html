@@ -110,18 +110,20 @@
         .fill-main { background: linear-gradient(90deg, #00f2fe, #4facfe); border-radius: 4px; box-shadow: 0 0 10px rgba(0, 242, 254, 0.3); }
         .fill-alt { background: linear-gradient(90deg, #a78bfa, #c084fc); border-radius: 4px; opacity: 0.8; }
 
-        /* Image avec curseur cliquable */
+        /* Images avec curseur cliquable */
         .media-container {
             flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
             border: 1px solid var(--border-glass); border-radius: 12px; padding: 15px; 
             background: rgba(0,0,0,0.1); margin-bottom: 15px; overflow: hidden;
         }
-        
+        .media-grid-2 { display: flex; gap: 15px; height: 100%; width: 100%; align-items: center; justify-content: center; }
+        .media-grid-2 figure { width: 50%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0; overflow: hidden; }
+
         .zoomable {
             max-width: 100%; max-height: 45vh; object-fit: contain;
             border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
             border: 1px solid var(--border-glass); transition: transform 0.3s;
-            cursor: zoom-in;
+            cursor: zoom-in; background-color: #000;
         }
         .zoomable:hover { transform: scale(1.03); border-color: var(--accent-neon); }
         .media-caption { font-style: italic; color: #64748b; font-size: 0.8rem; margin-top: 10px; text-align: center; }
@@ -155,6 +157,9 @@
         @media (max-width: 900px) {
             body { height: auto; overflow: auto; }
             .dashboard-grid { grid-template-columns: 1fr; display: flex; flex-direction: column;}
+            .media-grid-2 { flex-direction: column; }
+            .media-grid-2 figure { width: 100%; }
+            .media-grid-2 img { max-height: none; width: 100%; }
             .card { overflow: visible; }
         }
     </style>
@@ -185,6 +190,14 @@
                 </div>
 
                 <div class="card">
+                    <h2>2. Cahier des Charges</h2>
+                    <ul style="line-height: 1.8; margin-left: 20px; color: var(--text-secondary);">
+                        <li>Installation d’un serveur de ticketing GestSup, accompagnée de la sécurisation de l’environnement Debian 12 + formation à son utilisation.</li>
+                        <li>Audit de la configuration des switches réseau.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
                     <h2>3. Organisation Sprints (4 Semaines)</h2>
                     <p style="font-size: 0.85rem;">Méthode agile adaptée : Focus principal sur Gestsup, avec flexibilité pour la supervision Zabbix et le support.</p>
                     
@@ -212,7 +225,7 @@
                                 <td></td><td class="fill-alt"></td><td></td><td class="fill-alt"></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">Support N1 ponctuel</td>
+                                <td style="text-align: left;">Support N1 / Audit Switches</td>
                                 <td class="fill-alt"></td><td></td><td class="fill-alt"></td><td></td>
                             </tr>
                         </tbody>
@@ -227,16 +240,22 @@
 
             <div class="col-right">
                 <div class="card">
-                    <h2>2. Preuves Techniques et Fonctionnelles (E6)</h2>
+                    <h2>4. Preuves Techniques et Fonctionnelles (E6)</h2>
                     
                     <div class="media-container">
-                        <figure style="margin: 0; text-align: center;">
-                            <img src="20250626_140600.jpg" alt="Interface de Gestsup fonctionnelle" class="zoomable">
-                            <figcaption class="media-caption">Cliquez pour agrandir.</figcaption>
-                        </figure>
+                        <div class="media-grid-2">
+                            <figure>
+                                <img src="20250626_140600.jpg" alt="Interface de Gestsup fonctionnelle" class="zoomable">
+                                <figcaption class="media-caption">1. Dashboard Gestsup</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="GESTSUP.png" alt="Portail de création de compte Gestsup" class="zoomable" style="background-color: white;">
+                                <figcaption class="media-caption">2. Portail d'inscription</figcaption>
+                            </figure>
+                        </div>
                     </div>
                     
-                    <p><strong>Preuve visuelle :</strong> Capture prouvant que le serveur web et la base de données sont liés et que Gestsup est opérationnel sur le réseau pour le traitement des tickets.</p>
+                    <p><strong>Preuves visuelles :</strong> Le serveur web et la base de données sont liés, rendant le tableau de bord Gestsup opérationnel sur le réseau (Photo 1). Le portail utilisateur est également configuré pour permettre la création de comptes et de tickets en toute autonomie (Photo 2).</p>
                     
                     <div style="margin-top: 15px;">
                         <span style="color: var(--text-primary); font-weight: bold; font-size: 0.9rem;">Compétences validées :</span>
