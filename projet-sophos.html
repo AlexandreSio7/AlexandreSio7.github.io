@@ -6,32 +6,77 @@
     <title>Support & Préparation de Poste - Alexandre Barrey</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* ============================================================
+           STYLES SPECIFIQUES POUR LE GANTT ET LA GALERIE D'IMAGES
+           ============================================================ */
         .gantt-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.85rem; background: rgba(255,255,255,0.02); }
         .gantt-table th, .gantt-table td { border: 1px solid rgba(255,255,255,0.1); padding: 12px; text-align: center; }
         .fill { background: linear-gradient(90deg, #00f2fe, #4facfe); border-radius: 4px; box-shadow: 0 0 10px rgba(0, 242, 254, 0.3); }
         .highlight { color: #00f2fe; font-weight: bold; }
+
+        .card {
+            background: rgba(23, 23, 23, 0.7); backdrop-filter: blur(10px);
+            padding: 20px 25px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 30px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05); color: #f1f5f9; padding: 5px 12px; 
+            border-radius: 50px; font-size: 0.8rem; font-weight: 600; 
+            border: 1px solid rgba(255, 255, 255, 0.08); margin-right: 5px;
+        }
+
+        /* --- GALERIE D'IMAGES --- */
+        .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .media-grid figure { margin: 0; text-align: center; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .zoomable {
+            max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s;
+            cursor: zoom-in;
+        }
+        .zoomable:hover { transform: scale(1.03); border-color: #00f2fe; }
+        .media-caption { font-size: 0.85rem; color: #94a3b8; margin-top: 15px; }
+
+        /* --- MODAL ZOOM --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000; padding-top: 50px;
+            left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+            background-color: rgba(4, 5, 9, 0.95); backdrop-filter: blur(15px);
+            opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal.show { opacity: 1; }
+        .modal-content {
+            margin: auto; display: block; max-width: 90%; max-height: 80vh;
+            border-radius: 12px; border: 1px solid #00f2fe; box-shadow: 0 0 40px rgba(0, 242, 254, 0.2);
+        }
+        #caption { margin: auto; display: block; width: 80%; max-width: 700px; text-align: center; color: #fff; padding: 20px 0; font-size: 1.2rem; }
+        .close-modal {
+            position: absolute; top: 20px; right: 40px; color: #94a3b8;
+            font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
+        }
+        .close-modal:hover { color: #00f2fe; }
     </style>
 </head>
-<body>
+<body style="background-color: #0a0a0a; color: #f5f5f5; font-family: 'Segoe UI', sans-serif;">
 
     <div style="padding: 20px; max-width: 1200px; margin: 0 auto;">
-        <a href="index.html#projets" class="btn" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: #00f2fe;">
+        <a href="index.html#projets" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: #00f2fe; font-weight: bold; border: 1px solid #00f2fe; padding: 8px 15px; border-radius: 8px; background: rgba(0,242,254,0.1);">
             <span>←</span> Retour au portfolio
         </a>
     </div>
 
     <section class="section" style="max-width: 1200px; margin: 20px auto; padding: 0 20px;">
-        <h1 class="section-title">Support Utilisateur & Maintenance du Parc</h1>
+        <h1 style="font-size: 2.2rem; margin-bottom: 30px; border-left: 4px solid #00f2fe; padding-left: 15px;">Support Utilisateur & Maintenance du Parc</h1>
         
-        <div class="card" style="margin-bottom: 30px;">
-            <h3>📋 Missions en Entreprise</h3>
+        <div class="card">
+            <h3 style="color: #00f2fe; margin-bottom: 10px;">📋 Missions en Entreprise</h3>
             <p>Durant cette période intensive, j'ai assuré le maintien en condition opérationnelle du parc informatique. Mes responsabilités couvraient le cycle complet : de la <span class="highlight">préparation des postes</span> à l'accompagnement des utilisateurs via le <span class="highlight">Helpdesk GLPI</span>, tout en garantissant la sécurité via <span class="highlight">Sophos</span>.</p>
         </div>
 
-        <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
             
-            <div class="card">
-                <h3>💻 Préparation de Poste</h3>
+            <div class="card" style="margin-bottom: 0;">
+                <h3 style="color: #00f2fe; margin-bottom: 15px;">💻 Préparation de Poste</h3>
                 <ul style="line-height: 1.8; margin-left: 20px; color: #94a3b8;">
                     <li>Déballage et inventaire du nouveau matériel.</li>
                     <li>Installation de l'OS et des logiciels métiers.</li>
@@ -40,29 +85,51 @@
                 </ul>
             </div>
 
-            <div class="card">
-                <h3>🛡️ Sécurité Endpoint (Sophos)</h3>
+            <div class="card" style="margin-bottom: 0;">
+                <h3 style="color: #00f2fe; margin-bottom: 15px;">🛡️ Sécurité Endpoint (Sophos)</h3>
                 <ul style="line-height: 1.8; margin-left: 20px; color: #94a3b8;">
-                    <li>Installation de l'agent Sophos sur les nouveaux postes.</li>
+                    <li>Installation matérielle et agent Sophos.</li>
                     <li>Vérification de la conformité des politiques de sécurité.</li>
-                    <li>Gestion des alertes de sécurité et scans antivirus.</li>
+                    <li>Rédaction de documentations techniques.</li>
                     <li>Contrôle des périphériques USB et filtrage Web.</li>
                 </ul>
             </div>
 
-            <div class="card">
-                <h3>🎧 Assistance Utilisateur (GLPI)</h3>
+            <div class="card" style="margin-bottom: 0;">
+                <h3 style="color: #00f2fe; margin-bottom: 15px;">🎧 Assistance Utilisateur (GLPI)</h3>
                 <ul style="line-height: 1.8; margin-left: 20px; color: #94a3b8;">
                     <li>Réception et qualification des tickets de support.</li>
                     <li>Interventions de proximité ou prise en main à distance.</li>
                     <li>Résolution d'incidents matériels et logiciels.</li>
-                    <li>Mise à jour de la documentation technique.</li>
+                    <li>Mise à jour de la base de connaissances.</li>
                 </ul>
             </div>
         </div>
 
-        <div class="card" style="margin-top: 30px;">
-            <h3>📅 Planning de Réalisation (Janvier - Février 2026)</h3>
+        <div class="card">
+            <h3 style="color: #00f2fe; margin-bottom: 15px;">📸 Preuves Techniques (En Entreprise)</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px;">Voici quelques illustrations des missions réalisées (déploiement matériel, rédaction de documentation et suivi des incidents).</p>
+            
+            <div class="media-grid">
+                <figure>
+                    <img src="1000012579.jpg" alt="Installation physique du boîtier Firewall Sophos XGS 108" class="zoomable">
+                    <figcaption class="media-caption"><strong>1. Matériel :</strong> Installation physique d'un boîtier Sophos XGS 108.</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="1000012590.jpg" alt="Rédaction de documentation technique de configuration Sophos" class="zoomable">
+                    <figcaption class="media-caption"><strong>2. Documentation :</strong> Création de tutoriels pour la configuration de services (ex: NAT/SMTP).</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="1000012873.jpg" alt="Gestion des tickets sur l'interface GLPI" class="zoomable">
+                    <figcaption class="media-caption"><strong>3. Ticketing :</strong> Interface GLPI pour le suivi des commandes et incidents utilisateurs.</figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="color: #00f2fe; margin-bottom: 15px;">📅 Planning de Réalisation (Janvier - Février 2026)</h3>
             <p style="font-size: 0.9rem; margin-bottom: 15px; font-style: italic; color: #94a3b8;">
                 Rythme : Temps plein (9h00 - 17h30) du 05/01 au 13/02.
             </p>
@@ -105,9 +172,9 @@
             </div>
         </div>
 
-        <div class="card" style="margin-top: 30px; border-left: 4px solid #00f2fe;">
-            <h3>✅ Compétences validées (Référentiel SISR)</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+        <div class="card" style="border-left: 4px solid #00f2fe;">
+            <h3 style="color: #00f2fe; margin-bottom: 15px;">✅ Compétences validées (Référentiel SISR)</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                 <span class="badge">B1.2 - Support et mise à disposition de services informatiques</span>
                 <span class="badge">B1.1 - Gestion du patrimoine informatique</span>
                 <span class="badge">Travailler en mode projet</span>
@@ -116,9 +183,44 @@
 
     </section>
 
-    <footer style="text-align: center; padding: 40px; color: #64748b; font-size: 0.8rem;">
+    <footer style="text-align: center; padding: 40px; color: #64748b; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px;">
         <p>© 2026 - Alexandre Barrey - Portfolio Professionnel</p>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
+        const images = document.querySelectorAll(".zoomable");
+        const span = document.getElementsByClassName("close-modal")[0];
+
+        images.forEach(img => {
+            img.onclick = function(){
+                modal.style.display = "block";
+                setTimeout(() => { modal.classList.add("show"); }, 10);
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+        });
+
+        span.onclick = function() {
+            modal.classList.remove("show");
+            setTimeout(() => { modal.style.display = "none"; }, 300);
+        }
+
+        modal.onclick = function(e) {
+            if(e.target !== modalImg) {
+                modal.classList.remove("show");
+                setTimeout(() => { modal.style.display = "none"; }, 300);
+            }
+        }
+    </script>
 
 </body>
 </html>
