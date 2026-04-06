@@ -89,25 +89,44 @@
         .card h2 { margin-bottom: 15px; font-size: 1.3rem; font-weight: 800; color: var(--text-primary); }
         .card p { color: var(--text-secondary); margin-bottom: 10px; font-size: 0.95rem; }
 
-        /* Images avec curseur cliquable */
+        /* BOUTON DOCUMENTATION */
+        .btn-doc {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 20px; background: rgba(0, 242, 254, 0.1);
+            color: var(--accent-neon); text-decoration: none;
+            border-radius: 8px; font-weight: 600; font-size: 0.85rem;
+            border: 1px solid var(--accent-neon); transition: var(--transition-smooth);
+            margin-top: 10px;
+        }
+        .btn-doc:hover {
+            background-color: var(--accent-neon); color: #000;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4); transform: translateY(-2px);
+        }
+
+        /* TABLEAU GANTT AGILE */
+        .gantt-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.8rem; background: rgba(0,0,0,0.2); border-radius: 8px; overflow: hidden; }
+        .gantt-table th, .gantt-table td { border: 1px solid var(--border-glass); padding: 8px; text-align: center; color: var(--text-secondary); }
+        .gantt-table th { color: var(--text-primary); font-weight: bold; background: rgba(255,255,255,0.05); }
+        .fill-main { background: linear-gradient(90deg, #00f2fe, #4facfe); border-radius: 4px; box-shadow: 0 0 10px rgba(0, 242, 254, 0.3); }
+        .fill-alt { background: linear-gradient(90deg, #a78bfa, #c084fc); border-radius: 4px; opacity: 0.8; }
+
+        /* Image avec curseur cliquable */
         .media-container {
-            flex: 1; display: flex; flex-direction: column; justify-content: center;
+            flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
             border: 1px solid var(--border-glass); border-radius: 12px; padding: 15px; 
             background: rgba(0,0,0,0.1); margin-bottom: 15px; overflow: hidden;
         }
-        .media-grid-2 { display: flex; gap: 15px; height: 100%; align-items: center; justify-content: center; }
-        .media-grid-2 figure { width: 50%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0; overflow: hidden; }
         
-        .media-grid-2 img {
+        .zoomable {
             max-width: 100%; max-height: 45vh; object-fit: contain;
             border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
             border: 1px solid var(--border-glass); transition: transform 0.3s;
-            cursor: pointer; /* Indique à la souris qu'on peut cliquer */
+            cursor: zoom-in;
         }
-        .media-grid-2 img:hover { transform: scale(1.03); border-color: var(--accent-neon); }
+        .zoomable:hover { transform: scale(1.03); border-color: var(--accent-neon); }
         .media-caption { font-style: italic; color: #64748b; font-size: 0.8rem; margin-top: 10px; text-align: center; }
 
-        /* NOUVEAU : STYLE DE LA LIGHTBOX (MODAL ZOOOM) */
+        /* MODAL ZOOOM */
         .modal {
             display: none; position: fixed; z-index: 2000; padding-top: 50px;
             left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
@@ -136,9 +155,6 @@
         @media (max-width: 900px) {
             body { height: auto; overflow: auto; }
             .dashboard-grid { grid-template-columns: 1fr; display: flex; flex-direction: column;}
-            .media-grid-2 { flex-direction: column; }
-            .media-grid-2 figure { width: 100%; }
-            .media-grid-2 img { max-height: none; width: 100%; }
             .card { overflow: visible; }
         }
     </style>
@@ -160,42 +176,76 @@
             <div class="col-left">
                 <div class="card">
                     <h2>1. Contexte et Objectif</h2>
-                    <p>Mise en place d'une solution de helpdesk et de gestion d'incidents (WAMP/LAMP Stack). L'objectif est de centraliser et de suivre les demandes d'assistance des utilisateurs afin d'optimiser le temps de résolution de l'équipe informatique.</p>
-                    <p>Installation et configuration du serveur (Apache, PHP, MariaDB) ainsi que personnalisation de l'outil Gestsup.</p>
+                    <p>Mise en place d'une solution de helpdesk (WAMP/LAMP Stack). L'objectif est de centraliser les demandes d'assistance des utilisateurs pour optimiser le temps de résolution.</p>
+                    <p>Installation du serveur (Apache, PHP, MariaDB) et <strong>sécurisation via l'outil d'audit Lynis</strong>.</p>
+                    
+                    <a href="https://docs.google.com/document/d/1YjIhfpZXUVO52GbfeUSI_Tbaz53GZT0PYZGREAWkpzA/edit?usp=sharing" target="_blank" class="btn-doc">
+                        📄 Tutoriel : Création compte & Sécurité Lynis
+                    </a>
                 </div>
 
                 <div class="card">
-                    <h2>3. Compétences Validées</h2>
-                    <p>Bloc 1 : Support et mise à disposition de services IT.</p>
-                    <ul class="skill-list">
-                        <li class="skill-badge">✅ Suivre et orienter les demandes</li>
-                        <li class="skill-badge">✅ Gérer les incidents</li>
-                        <li class="skill-badge">✅ Travailler en mode projet</li>
-                        <li class="skill-badge">✅ Accompagner les utilisateurs</li>
-                    </ul>
+                    <h2>3. Organisation Sprints (4 Semaines)</h2>
+                    <p style="font-size: 0.85rem;">Méthode agile adaptée : Focus principal sur Gestsup, avec flexibilité pour la supervision Zabbix et le support.</p>
+                    
+                    <table class="gantt-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Tâches / Sprints</th>
+                                <th>S1</th>
+                                <th>S2</th>
+                                <th>S3</th>
+                                <th>S4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="text-align: left;">Déploiement LAMP & Gestsup</td>
+                                <td class="fill-main"></td><td class="fill-main"></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Audit Lynis & Documentation</td>
+                                <td></td><td></td><td class="fill-main"></td><td class="fill-main"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Aide Supervision (Zabbix)</td>
+                                <td></td><td class="fill-alt"></td><td></td><td class="fill-alt"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">Support N1 ponctuel</td>
+                                <td class="fill-alt"></td><td></td><td class="fill-alt"></td><td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 10px; display: flex; gap: 15px; font-size: 0.75rem; justify-content: center; color: var(--text-secondary);">
+                        <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:10px; height:10px; background: linear-gradient(90deg, #00f2fe, #4facfe); border-radius:2px;"></span> Fil Rouge (Gestsup)</span>
+                        <span style="display: flex; align-items: center; gap: 5px;"><span style="display:inline-block; width:10px; height:10px; background: linear-gradient(90deg, #a78bfa, #c084fc); border-radius:2px;"></span> Tâches annexes</span>
+                    </div>
                 </div>
             </div>
 
             <div class="col-right">
                 <div class="card">
-                    <h2>2. Preuves Techniques et Gestion de Projet (E6)</h2>
+                    <h2>2. Preuves Techniques et Fonctionnelles (E6)</h2>
                     
                     <div class="media-container">
-                        <div class="media-grid-2">
-                            <figure>
-                                <img src="20250626_140600.jpg" alt="Interface de Gestsup fonctionnelle" class="zoomable">
-                                <figcaption class="media-caption">Cliquez pour agrandir.</figcaption>
-                            </figure>
-
-                            <figure>
-                                <img src="gantt.jpg" alt="Planification du projet (Gantt)" class="zoomable">
-                                <figcaption class="media-caption">Cliquez pour agrandir.</figcaption>
-                            </figure>
-                        </div>
+                        <figure style="margin: 0; text-align: center;">
+                            <img src="20250626_140600.jpg" alt="Interface de Gestsup fonctionnelle" class="zoomable">
+                            <figcaption class="media-caption">Cliquez pour agrandir.</figcaption>
+                        </figure>
                     </div>
                     
-                    <p><strong>Photo 1 :</strong> Capture prouvant que le serveur web et la base de données sont liés et opérationnels.</p>
-                    <p><strong>Photo 2 :</strong> Diagramme de Gantt démontrant ma capacité à structurer les phases d'installation et de tests.</p>
+                    <p><strong>Preuve visuelle :</strong> Capture prouvant que le serveur web et la base de données sont liés et que Gestsup est opérationnel sur le réseau pour le traitement des tickets.</p>
+                    
+                    <div style="margin-top: 15px;">
+                        <span style="color: var(--text-primary); font-weight: bold; font-size: 0.9rem;">Compétences validées :</span>
+                        <ul class="skill-list" style="margin-top: 8px;">
+                            <li class="skill-badge">✅ Suivre et orienter les demandes</li>
+                            <li class="skill-badge">✅ Gérer les incidents</li>
+                            <li class="skill-badge">✅ Sécuriser un équipement (Lynis)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
